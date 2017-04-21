@@ -1,0 +1,10 @@
+framework module snapcall_framework {
+  umbrella header "snapcall_framework.h"
+
+  export *
+  module * { export * }
+}
+
+module snapcall_framework.Swift {
+    header "snapcall_framework-Swift.h"
+}
