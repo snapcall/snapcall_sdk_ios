@@ -188,6 +188,7 @@ SWIFT_PROTOCOL("_TtP18snapcall_framework18RatingViewDelegate_")
 - (void)ratingView:(RatingView * _Nonnull)ratingView didChangeRating:(float)newRating;
 @end
 
+@class UIViewController;
 
 SWIFT_CLASS("_TtC18snapcall_framework15Snapcall_Button")
 @interface Snapcall_Button : UIButton
@@ -195,6 +196,7 @@ SWIFT_CLASS("_TtC18snapcall_framework15Snapcall_Button")
 @property (nonatomic, strong) UIImage * _Null_unspecified logo;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)setValue:(id _Nullable)value forKey:(NSString * _Nonnull)key;
++ (void)launchSnapcallWithBid:(NSString * _Nonnull)Bid logo:(UIImage * _Nonnull)logo UIcontroller:(UIViewController * _Nonnull)UIcontroller;
 - (void)setBackgroundImage:(UIImage * _Nullable)image forState:(UIControlState)state;
 - (void)prepareForInterfaceBuilder;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
