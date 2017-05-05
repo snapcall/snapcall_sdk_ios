@@ -8,7 +8,10 @@ Ios framework to easily perform call from IOs application.
 Add it with Cocoapod :
 	pod 'snapcall_framework', :git => 'https://snapcall@bitbucket.org/seampl/framework_snapcall_ios.git'
 When asked write the password
-Cocoapod will properly add the framework with all the link.
+Cocoapod will properly add the framework with all the link. In some case u need to link the snapcall_framework.framework
+Add the capabilities backgroung mode voip, audio and fetch
+set the use bitcode to no (webrtc do not allow bitcode at this moment)
+add some line to your info.plist , for micro and camera.
 or
 Download the framework and add it as a framework to your ios project, don't forget to set all the attribute and link in your target setting.
 
