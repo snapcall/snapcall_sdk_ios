@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => 'https://snapcall@bitbucket.org/seampl/framework_snapcall_ios.git', :tag => '1.1.1'}
   spec.module_name  = 'Rich'
 
-
+spec.ios.deployment_target  = '10.0'
   spec.vendored_frameworks = 'snapcall_framework.framework'
 
  
