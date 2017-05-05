@@ -194,11 +194,16 @@ SWIFT_CLASS("_TtC18snapcall_framework15Snapcall_Button")
 @interface Snapcall_Button : UIButton
 @property (nonatomic, copy) NSString * _Nonnull Bid;
 @property (nonatomic, strong) UIImage * _Null_unspecified logo;
+@property (nonatomic, copy) NSString * _Null_unspecified logocall;
+@property (nonatomic) uint8_t R;
+@property (nonatomic) uint8_t G;
+@property (nonatomic) uint8_t B;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)setValue:(id _Nullable)value forKey:(NSString * _Nonnull)key;
 + (void)launchSnapcallWithBid:(NSString * _Nonnull)Bid logo:(UIImage * _Nonnull)logo UIcontroller:(UIViewController * _Nonnull)UIcontroller;
 - (void)setBackgroundImage:(UIImage * _Nullable)image forState:(UIControlState)state;
 - (void)prepareForInterfaceBuilder;
+- (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
 
