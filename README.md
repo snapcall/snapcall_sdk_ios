@@ -11,12 +11,13 @@ When asked write the password
 
 Cocoapod will properly add the framework with all the link. In some case you need to link the snapcall_framework.framework
 
-Add the capabilities backgroung mode voip, audio and fetch
 
-Set the use bitcode to no (webrtc do not allow bitcode at this moment)
 
-Add some line to your info.plist , for micro and camera usage.
+Set the use of bitcode to no (webrtc do not allow bitcode at this moment)
 
+Add capabilities for backgroud voip, audio, remote audio and inter-app audio
+
+Add plist option for microphone use and camera use.
 
 
  Or Download the framework and add it as a framework to your ios project, don't forget to set all the attribute and link in your target setting.
@@ -27,7 +28,7 @@ Add some line to your info.plist , for micro and camera usage.
 -SwiftWebSocket: Library for  Websocket connection
 
 # OS/Hardware requirements #
-Work on IOS 10 system (iphone >= 5 and tablet)
+Work on IOS 10 system (iphone >= 5 and tablet), but can taget ios >= 8
 Created with Xcode 8.
 
 # Use #
@@ -60,3 +61,6 @@ The Snapcall service, bind to the previous activity, get the BID's info in our s
             NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "Retrievecallnotification")))
         } 
     }
+The Call_context class allow you to set some info for the receiver and you can register for call event.
+
+You can set some important info with CallContext.getInstance.setInfo(...) before any call, soon you will be able to see this info in a WebInterface during the call. 
