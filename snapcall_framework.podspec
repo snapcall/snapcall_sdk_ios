@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'snapcall_framework'
-  spec.version      = '1.1.1'
+  spec.version      = '2.0.0'
   spec.license      = { :type => 'Custom' }
   spec.homepage     = 'https://web.snapcall.io/'
   spec.authors      = { 'Noyelle Pierre' => 'noyelle.pierre@gmail.com' }
