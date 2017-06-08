@@ -44,6 +44,7 @@ On click a call will start.
 	G			Number	0-255
 	B			Number	0-255
 
+You can programatically set all this info.
 
 The Snapcall service, bind to the previous activity, get the BID's info in our server and link the media client and the Signaling client to allow communication.
 
