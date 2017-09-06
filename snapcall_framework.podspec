@@ -24,6 +24,6 @@ spec.ios.deployment_target  = '8.0'
  
 
 spec.dependency 'WebRTC'
-spec.dependency 'Starscream' '~> 2.0.3'
+spec.dependency 'Starscream', '~> 2.0.3'
 
 end
