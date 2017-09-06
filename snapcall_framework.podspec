@@ -23,6 +23,7 @@ spec.ios.deployment_target  = '8.0'
   spec.ios.framework  = 'SystemConfiguration'
  
 
-spec.dependency 'WebRTC', '~>56.12.15101'
-spec.dependency 'SwiftWebSocket'
+spec.dependency 'WebRTC'
+spec.dependency 'Starscream'
+
 end

@@ -17,7 +17,7 @@ Set the use of bitcode to no (webrtc do not allow bitcode at this moment)
 
 Add capabilities for backgroud voip, audio, remote audio and inter-app audio
 
-Add plist option for microphone use and camera use.
+Add plist security option for microphone use and camera use.
 
 
  Or Download the framework and add it as a framework to your ios project, don't forget to set all the attribute and link in your target setting.

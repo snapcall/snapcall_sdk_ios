@@ -134,76 +134,106 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
 @import CoreGraphics;
+@import ObjectiveC;
+@import CallKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-@class UIImage;
-@protocol RatingViewDelegate;
 @class NSCoder;
-
-/// Rating bar, fully customisable from Interface builder
-SWIFT_CLASS("_TtC18snapcall_framework10RatingView")
-@interface RatingView : UIView
-/// Total number of stars
-@property (nonatomic) NSInteger starCount;
-/// Image of unlit star, if nil “starryStars_off” is used
-@property (nonatomic, strong) UIImage * _Nullable offImage;
-/// Image of fully lit star, if nil “starryStars_on” is used
-@property (nonatomic, strong) UIImage * _Nullable onImage;
-/// Image of half-lit star, if nil “starryStars_half” is used
-@property (nonatomic, strong) UIImage * _Nullable halfImage;
-/// Current rating, updates star images after setting
-@property (nonatomic) float rating;
-/// If set to “false” only full stars will be lit
-@property (nonatomic) BOOL halfStarsAllowed;
-/// If set to “false” user will not be able to edit the rating
-@property (nonatomic) BOOL editable;
-/// Delegate, must confrom to <em>RatingViewDelegate</em> protocol
-@property (nonatomic, weak) id <RatingViewDelegate> _Nullable delegate;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)awakeFromNib;
-- (void)prepareForInterfaceBuilder;
-- (void)layoutSubviews;
-@end
-
+@class UIImage;
 @class UITouch;
 @class UIEvent;
 
-@interface RatingView (SWIFT_EXTENSION(snapcall_framework))
-- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesMoved:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-- (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
-@end
-
-
-SWIFT_PROTOCOL("_TtP18snapcall_framework18RatingViewDelegate_")
-@protocol RatingViewDelegate
-/// Called when user’s touch ends
-/// \param ratingView Rating view, which calls this method
-///
-/// \param didChangeRating newRating New rating
-///
-- (void)ratingView:(RatingView * _Nonnull)ratingView didChangeRating:(float)newRating;
-@end
-
-@class UIViewController;
-
-SWIFT_CLASS("_TtC18snapcall_framework15Snapcall_Button")
+SWIFT_CLASS("_TtC18Snapcall_Framework15Snapcall_Button")
 @interface Snapcall_Button : UIButton
-- (void)setBidWithBid:(NSString * _Nonnull)Bid;
-- (void)setlogoWithLogo:(UIImage * _Nonnull)logo;
-- (void)setColorButtonWithR:(uint8_t)R G:(uint8_t)G B:(uint8_t)B;
-- (void)setVideoWithUseVideo:(BOOL)UseVideo;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, copy) NSString * _Nonnull Bid;
+@property (nonatomic, copy) NSString * _Null_unspecified logocall;
+@property (nonatomic) uint8_t R;
+@property (nonatomic) uint8_t G;
+@property (nonatomic) uint8_t B;
+@property (nonatomic) BOOL UseVideo;
+@property (nonatomic) BOOL UseSandbox;
+@property (nonatomic) BOOL MODBID;
+@property (nonatomic) BOOL MODINCOMING;
+@property (nonatomic) BOOL MODOUTGOING;
+@property (nonatomic) BOOL MODPHANTOM;
+@property (nonatomic, copy) NSString * _Nonnull contactName;
+@property (nonatomic, copy) NSString * _Nonnull contactBrand;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)setValue:(id _Nullable)value forKey:(NSString * _Nonnull)key;
-+ (void)launchSnapcallWithBid:(NSString * _Nonnull)Bid logo:(UIImage * _Nonnull)logo UIcontroller:(UIViewController * _Nonnull)UIcontroller UseVideo:(BOOL)UseVideo;
 - (void)setBackgroundImage:(UIImage * _Nullable)image forState:(UIControlState)state;
 - (void)setImage:(UIImage * _Nullable)image forState:(UIControlState)state;
 - (void)prepareForInterfaceBuilder;
 - (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+@end
+
+@class AVAudioSession;
+
+SWIFT_CLASS("_TtC18Snapcall_Framework21Snapcall_Call_Handler")
+@interface Snapcall_Call_Handler : NSObject
+- (void)audioSessionDidActivate:(AVAudioSession * _Nonnull)session;
+- (void)audioSessionDidDeactivate:(AVAudioSession * _Nonnull)session;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Snapcall_Call_Handler (SWIFT_EXTENSION(Snapcall_Framework))
+@end
+
+@class CXProvider;
+@class CXEndCallAction;
+@class CXStartCallAction;
+@class CXAnswerCallAction;
+@class CXSetHeldCallAction;
+@class CXAction;
+@class CXPlayDTMFCallAction;
+@class CXSetGroupCallAction;
+@class CXSetMutedCallAction;
+@class CXTransaction;
+
+@interface Snapcall_Call_Handler (SWIFT_EXTENSION(Snapcall_Framework)) <CXProviderDelegate>
+- (void)providerDidBegin:(CXProvider * _Nonnull)provider;
+- (void)providerDidReset:(CXProvider * _Nonnull)provider;
+- (void)provider:(CXProvider * _Nonnull)provider performEndCallAction:(CXEndCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performStartCallAction:(CXStartCallAction * _Nonnull)action;
+- (void)waitforAsignalWithUUID:(NSString * _Nonnull)UUID;
+- (void)provider:(CXProvider * _Nonnull)provider performAnswerCallAction:(CXAnswerCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performSetHeldCallAction:(CXSetHeldCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider timedOutPerformingAction:(CXAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performPlayDTMFCallAction:(CXPlayDTMFCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performSetGroupCallAction:(CXSetGroupCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performSetMutedCallAction:(CXSetMutedCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider didActivateAudioSession:(AVAudioSession * _Nonnull)audioSession;
+- (void)provider:(CXProvider * _Nonnull)provider didDeactivateAudioSession:(AVAudioSession * _Nonnull)audioSession;
+- (BOOL)provider:(CXProvider * _Nonnull)provider executeTransaction:(CXTransaction * _Nonnull)transaction SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC18Snapcall_Framework22Snapcall_PeerConnexion")
+@interface Snapcall_PeerConnexion : Snapcall_Call_Handler
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC18Snapcall_Framework21Snapcall_Socket_Event")
+@interface Snapcall_Socket_Event : Snapcall_PeerConnexion
++ (Snapcall_Socket_Event * _Nonnull)getInstance SWIFT_WARN_UNUSED_RESULT;
++ (void)Clean;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Snapcall_Socket_Event (SWIFT_EXTENSION(Snapcall_Framework))
+@end
+
+
+@interface Snapcall_Socket_Event (SWIFT_EXTENSION(Snapcall_Framework))
+@end
+
+
+@interface Snapcall_Socket_Event (SWIFT_EXTENSION(Snapcall_Framework))
 @end
 
 #pragma clang diagnostic pop
