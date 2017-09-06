@@ -132,14 +132,25 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_DEPRECATED_MSG(...) __attribute__((deprecated(__VA_ARGS__)))
 #endif
 #if defined(__has_feature) && __has_feature(modules)
+@import ObjectiveC;
 @import UIKit;
 @import CoreGraphics;
-@import ObjectiveC;
 @import CallKit;
+@import Foundation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+@class Snapcall_Parameter;
+
+SWIFT_CLASS("_TtC18Snapcall_Framework8Snapcall")
+@interface Snapcall : NSObject
+@property (nonatomic, copy) void (^ _Null_unspecified Calluser)(NSString * _Nonnull, NSString * _Nonnull, NSString * _Nonnull, NSString * _Nonnull, BOOL);
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
++ (Snapcall * _Nonnull)getSnapcall SWIFT_WARN_UNUSED_RESULT;
+- (void)addCallWithParam:(Snapcall_Parameter * _Nonnull)param;
+@end
+
 @class NSCoder;
 @class UIImage;
 @class UITouch;
@@ -176,6 +187,7 @@ SWIFT_CLASS("_TtC18Snapcall_Framework21Snapcall_Call_Handler")
 - (void)audioSessionDidActivate:(AVAudioSession * _Nonnull)session;
 - (void)audioSessionDidDeactivate:(AVAudioSession * _Nonnull)session;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (void)Add_CallWithParam:(Snapcall_Parameter * _Nonnull)param;
 @end
 
 
@@ -208,6 +220,25 @@ SWIFT_CLASS("_TtC18Snapcall_Framework21Snapcall_Call_Handler")
 - (void)provider:(CXProvider * _Nonnull)provider didActivateAudioSession:(AVAudioSession * _Nonnull)audioSession;
 - (void)provider:(CXProvider * _Nonnull)provider didDeactivateAudioSession:(AVAudioSession * _Nonnull)audioSession;
 - (BOOL)provider:(CXProvider * _Nonnull)provider executeTransaction:(CXTransaction * _Nonnull)transaction SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC18Snapcall_Framework18Snapcall_Parameter")
+@interface Snapcall_Parameter : NSObject
+@property (nonatomic, copy) NSString * _Nonnull Bid_Id;
+@property (nonatomic) BOOL UseVideo;
+@property (nonatomic) BOOL UseSandbox;
+@property (nonatomic, copy) NSString * _Nonnull Remote_Name;
+@property (nonatomic, copy) NSString * _Nonnull Remote_Brand;
+@property (nonatomic, copy) NSString * _Nonnull Remote_Sessid;
+@property (nonatomic, copy) NSString * _Nonnull A_name;
+@property (nonatomic) BOOL Answered;
+@property (nonatomic, copy) NSString * _Null_unspecified tmp_Sdp;
+@property (nonatomic, copy) NSString * _Nonnull Call_Mod;
+@property (nonatomic, copy) NSString * _Nonnull context;
+- (nonnull instancetype)initWithUuid_obj:(NSUUID * _Nonnull)uuid_obj OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUUID_obj:(NSUUID * _Nonnull)UUID_obj OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 
