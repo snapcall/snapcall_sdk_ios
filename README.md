@@ -3,7 +3,7 @@
 ## Getting Started ##
 
 	Add it with Cocoapod :
-		pod 'snapcall_framework', :git => 'https://snapcall@bitbucket.org/seampl/framework_snapcall_ios.git'
+		pod 'Snapcall_Framework', :git => 'https://snapcall@bitbucket.org/seampl/framework_snapcall_ios.git'
 	When asked write the password
 	Cocoapod will properly add the framework with all the link. In some case you need to link the snapcall_framework.framework
 	Set the use of bitcode to no (webrtc do not allow bitcode at this moment)
