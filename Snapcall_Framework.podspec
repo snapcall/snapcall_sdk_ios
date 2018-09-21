@@ -23,6 +23,6 @@ spec.vendored_frameworks = 'Snapcall_Framework.framework'
   spec.ios.framework  = 'SystemConfiguration'
  
 
-spec.dependency 'WebRTC'
+spec.dependency 'GoogleWebRTC'
 spec.dependency 'SwiftWebSocket'
 end
