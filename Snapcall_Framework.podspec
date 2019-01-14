@@ -23,5 +23,5 @@ spec.vendored_frameworks = 'Snapcall_Framework.framework'
   spec.ios.framework  = 'SystemConfiguration'
   spec.library = 'z' 
 
-spec.dependency 'WebRTC'
+spec.dependency 'WebRTC' , '61.5.19063'
 end
