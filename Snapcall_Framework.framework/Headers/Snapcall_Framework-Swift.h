@@ -218,6 +218,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Null_unspecifi
 + (void)releaseSnapcall;
 @end
 
+@class NSString;
 
 SWIFT_PROTOCOL("_TtP18Snapcall_Framework22Snapcall_eventListener_")
 @protocol Snapcall_eventListener
