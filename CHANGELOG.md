@@ -3,6 +3,10 @@
 
 ## Next Version
 
+## 5.2.1
+
+- carthage support
+
 ## 5.2.0
 
 - Re-write Event System
