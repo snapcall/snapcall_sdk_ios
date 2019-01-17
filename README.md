@@ -7,4 +7,4 @@ see [Snapcall documentation](https://doc.snapcall.io/#ios)
 
 ## carthage
 
-git "snapcall/snapcall_sdk_ios" == 5.2.1
+github "snapcall/snapcall_sdk_ios" == 5.2.1
