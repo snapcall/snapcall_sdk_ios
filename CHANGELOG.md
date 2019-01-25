@@ -1,21 +1,22 @@
 # CHANGELOG
 
-
 ## Next Version
 
-## 5.2.1
 
-- carthage support
+## 5.3.0
+
+- formate snapcall context format 
+- context as dictionary to be sure to converte him to json 
 
 ## 5.2.0
 
-- Re-write Event System
+- Re-write Event System 
 - Background custom color
-- arch *86 and i386
+- framework build script refont to build each arch needed
 - integrate SwiftWebSocket without using cocoapod
 - Build fix by linking zlib to snapcall
 
-## 5.0.0
+## 5.1.0
 - bid call
 - push call
 - inter app call
