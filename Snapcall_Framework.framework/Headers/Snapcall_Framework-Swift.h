@@ -279,7 +279,7 @@ SWIFT_CLASS("_TtC18Snapcall_Framework27Snapcall_External_Parameter")
 /// WebSocket objects are bidirectional network streams that communicate over HTTP. RFC 6455.
 SWIFT_CLASS("_TtC18Snapcall_Framework18Snapcall_WebSocket")
 @interface Snapcall_WebSocket : NSObject
-@property (nonatomic, readonly) NSInteger hashValue;
+@property (nonatomic, readonly) NSUInteger hash;
 /// Create a WebSocket object with a deferred connection; the connection is not opened until the .open() method is called.
 - (nonnull instancetype)init;
 @end
