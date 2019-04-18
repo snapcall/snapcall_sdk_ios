@@ -187,6 +187,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
+SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduced=10.0)
+@interface SCClient : NSObject
+/// basic init for a client.
+/// will register for snapcall Event.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <SCClient>
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class PKPushCredentials;
 @class Snapcall_External_Parameter;
 @class PKPushPayload;
@@ -330,6 +343,249 @@ typedef SWIFT_ENUM(NSInteger, WebSocketReadyState, closed) {
 /// The connection is closed or couldn’t be opened.
   WebSocketReadyStateClosed = 3,
 };
+
+
+/// Allow to give access to the developer to call information needed
+/// to develop a nice experience with snapcall.
+/// It implement the codable protocole in order to save it to file and
+/// recreate it back when needed.
+/// It serve to make snapcall api request about the call.
+SWIFT_CLASS("_TtC18Snapcall_Framework11objc_SCCall")
+@interface objc_SCCall : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC18Snapcall_Framework18objc_SCClientEvent")
+@interface objc_SCClientEvent : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+/// Function the developer have to implement in order to make a custom UI
+/// author:
+/// Pierre Noyelle
+SWIFT_PROTOCOL("_TtP18Snapcall_Framework21objc_SCClientListener_")
+@protocol objc_SCClientListener
+/// Will be called each time the SDK process will start
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onConnectionReady:(objc_SCClientEvent * _Nonnull)parameter;
+/// Will be called When we succefully gather the information from the database about the call
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onCreated:(objc_SCClientEvent * _Nonnull)parameter;
+/// called when ring start - the remote leg receive the call the media start
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onRinging:(objc_SCClientEvent * _Nonnull)parameter;
+/// when the call is answered on the other side.
+/// if in queue mode the email of the agent will be accessible
+/// the timer will start , you will receive tick
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onAnswer:(objc_SCClientEvent * _Nonnull)parameter;
+/// Called when the internet connection shut down during the next 15s if internet
+/// come back the call will be reconnected
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     <objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onInternetDown:(objc_SCClientEvent * _Nonnull)parameter;
+/// Called when the internet connection come back.
+/// The reconnection will occur
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onInternetUP:(objc_SCClientEvent * _Nonnull)parameter;
+/// called when the call end.
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent> : an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onHangup:(objc_SCClientEvent * _Nonnull)parameter;
+/// called when other leg put the call on hold.
+/// the waiting sound will be sent.
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onHeld:(objc_SCClientEvent * _Nonnull)parameter;
+/// called when other leg stop hold mode
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onUnheld:(objc_SCClientEvent * _Nonnull)parameter;
+/// When Snapcall Process end .
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onConnectionShutDown;
+/// called each time the call is muted
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onMuteChange:(objc_SCClientEvent * _Nonnull)parameter;
+/// called each time the Audio output route change
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onSpeakerChange:(objc_SCClientEvent * _Nonnull)parameter;
+/// Called when the sdk detect that an UI should be displayed to the user
+/// to contole the call
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onUIRequest:(objc_SCClientEvent * _Nonnull)parameter;
+/// called each second for timing monitor
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     parameter<objc_SCClientEvent>: an Event that contain everything about call and hardware state
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)onTime:(objc_SCClientEvent * _Nonnull)parameter;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

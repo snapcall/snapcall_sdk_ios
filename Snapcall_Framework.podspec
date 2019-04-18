@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = 'https://web.snapcall.io/'
   spec.authors      = { 'Noyelle Pierre' => 'noyelle.pierre@gmail.com' }
   spec.summary      = 'Make snapcall call with ios'
-  spec.source       = { :git => 'https://github.com/snapcall/iOS_framework_release.git', :branch => 'testRelease/5.4.0' }
+  spec.source       = { :git => 'https://github.com/snapcall/iOS_framework_release.git', :branch => 'beta' }
 
 spec.ios.deployment_target  = '8.0'
 spec.vendored_frameworks = 'Snapcall_Framework.framework'
@@ -21,6 +21,7 @@ spec.vendored_frameworks = 'Snapcall_Framework.framework'
   spec.ios.framework  = 'CallKit'
   spec.ios.framework  = 'NotificationCenter'
   spec.ios.framework  = 'SystemConfiguration'
+  spec.ios.framework  = 'CoreTelephony'
   spec.library = 'z' 
 
 spec.dependency 'WebRTC' , '61.5.19063'
