@@ -208,36 +208,67 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 @class PKPushCredentials;
 @class Snapcall_External_Parameter;
 @class PKPushPayload;
+@class objc_SCCall;
 
 SWIFT_CLASS("_TtC18Snapcall_Framework8Snapcall")
 @interface Snapcall : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Null_unspecified AppName;)
-+ (NSString * _Null_unspecified)AppName SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable AppName;)
++ (NSString * _Nullable)AppName SWIFT_WARN_UNUSED_RESULT;
 + (void)setAppName:(NSString * _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Null_unspecified ringtoneSound;)
-+ (NSString * _Null_unspecified)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable ringtoneSound;)
++ (NSString * _Nullable)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
 + (void)setRingtoneSound:(NSString * _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Null_unspecified callIconTemplate;)
-+ (NSData * _Null_unspecified)callIconTemplate SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Nullable callIconTemplate;)
++ (NSData * _Nullable)callIconTemplate SWIFT_WARN_UNUSED_RESULT;
 + (void)setCallIconTemplate:(NSData * _Nullable)value;
 - (BOOL)registerUserWithCredential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Null_unspecified)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)registerUserWithToken:(NSString * _Nonnull)token identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Null_unspecified)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)setUserActiveWithActive:(BOOL)active credential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Null_unspecified)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)setUserActiveWithActive:(BOOL)active token:(NSString * _Nonnull)token identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Null_unspecified)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
-- (void)buttonIsClosedWithBid_id:(NSString * _Nonnull)bid_id snapcallCallBack:(void (^ _Null_unspecified)(BOOL))snapcallCallBack;
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId sendClientMessage:(void (^ _Null_unspecified)(NSString * _Nonnull))sendClientMessage parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId applicationName:(NSString * _Nonnull)applicationName customClientIdentifier:(NSString * _Nonnull)customClientIdentifier parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId snapcallIdentifier:(NSString * _Nonnull)snapcallIdentifier parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (BOOL)registerUserWithToken:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Nonnull)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)setUserActiveWithActive:(BOOL)active credential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)setUserActiveWithActive:(BOOL)active token:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)buttonIsClosedWithBid_id:(NSString * _Nonnull)bid_id snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId sendClientMessage:(void (^ _Nonnull)(NSString * _Nonnull))sendClientMessage parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId applicationName:(NSString * _Nonnull)applicationName customClientIdentifier:(NSString * _Nonnull)customClientIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId snapcallIdentifier:(NSString * _Nonnull)snapcallIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)restorCallUI SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (NSString * _Nullable)decodePushDataWithPushKitPayload:(PKPushPayload * _Null_unspecified)pushKitPayload SWIFT_WARN_UNUSED_RESULT;
-- (void)receiveCallWithPushKitPayload:(PKPushPayload * _Null_unspecified)pushKitPayload parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (BOOL)requestPermission SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)decodePushDataWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)receiveCallWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)requestPermissionWithCallback:(void (^ _Nonnull)(BOOL))callback;
+/// Allow to make a request for microphone permission
+/// this function will block until the result
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> if the permission has been granted
+- (BOOL)requestPermission SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED;
 - (BOOL)isPermissionRequestGranted SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (Snapcall * _Nonnull)getSnapcall SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
 + (void)releaseSnapcall;
+/// make the rate request after having checked the different argument for objective c
+/// implementation
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     call<objc_SCCall>: object representing the call to rate
+///   </li>
+///   <li>
+///     rate<Int>: the rate to set between 0 and  5
+///   </li>
+///   <li>
+///     requestCallBack<(( _ error: Error?, _ : Bool)>: closure to get the result of the request or to get an error of type snapcallError
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)rateCallWithCall:(objc_SCCall * _Nullable)call rate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
 @end
 
 @class NSString;
@@ -805,36 +836,67 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 @class PKPushCredentials;
 @class Snapcall_External_Parameter;
 @class PKPushPayload;
+@class objc_SCCall;
 
 SWIFT_CLASS("_TtC18Snapcall_Framework8Snapcall")
 @interface Snapcall : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Null_unspecified AppName;)
-+ (NSString * _Null_unspecified)AppName SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable AppName;)
++ (NSString * _Nullable)AppName SWIFT_WARN_UNUSED_RESULT;
 + (void)setAppName:(NSString * _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Null_unspecified ringtoneSound;)
-+ (NSString * _Null_unspecified)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable ringtoneSound;)
++ (NSString * _Nullable)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
 + (void)setRingtoneSound:(NSString * _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Null_unspecified callIconTemplate;)
-+ (NSData * _Null_unspecified)callIconTemplate SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Nullable callIconTemplate;)
++ (NSData * _Nullable)callIconTemplate SWIFT_WARN_UNUSED_RESULT;
 + (void)setCallIconTemplate:(NSData * _Nullable)value;
 - (BOOL)registerUserWithCredential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Null_unspecified)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)registerUserWithToken:(NSString * _Nonnull)token identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Null_unspecified)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)setUserActiveWithActive:(BOOL)active credential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Null_unspecified)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)setUserActiveWithActive:(BOOL)active token:(NSString * _Nonnull)token identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Null_unspecified)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
-- (void)buttonIsClosedWithBid_id:(NSString * _Nonnull)bid_id snapcallCallBack:(void (^ _Null_unspecified)(BOOL))snapcallCallBack;
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId sendClientMessage:(void (^ _Null_unspecified)(NSString * _Nonnull))sendClientMessage parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId applicationName:(NSString * _Nonnull)applicationName customClientIdentifier:(NSString * _Nonnull)customClientIdentifier parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (void)launchCallWithBidId:(NSString * _Nonnull)bidId snapcallIdentifier:(NSString * _Nonnull)snapcallIdentifier parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (BOOL)registerUserWithToken:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Nonnull)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)setUserActiveWithActive:(BOOL)active credential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)setUserActiveWithActive:(BOOL)active token:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)buttonIsClosedWithBid_id:(NSString * _Nonnull)bid_id snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId sendClientMessage:(void (^ _Nonnull)(NSString * _Nonnull))sendClientMessage parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId applicationName:(NSString * _Nonnull)applicationName customClientIdentifier:(NSString * _Nonnull)customClientIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)launchCallWithBidId:(NSString * _Nonnull)bidId snapcallIdentifier:(NSString * _Nonnull)snapcallIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)restorCallUI SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (NSString * _Nullable)decodePushDataWithPushKitPayload:(PKPushPayload * _Null_unspecified)pushKitPayload SWIFT_WARN_UNUSED_RESULT;
-- (void)receiveCallWithPushKitPayload:(PKPushPayload * _Null_unspecified)pushKitPayload parameter:(Snapcall_External_Parameter * _Null_unspecified)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
-- (BOOL)requestPermission SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)decodePushDataWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)receiveCallWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
+- (void)requestPermissionWithCallback:(void (^ _Nonnull)(BOOL))callback;
+/// Allow to make a request for microphone permission
+/// this function will block until the result
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> if the permission has been granted
+- (BOOL)requestPermission SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED;
 - (BOOL)isPermissionRequestGranted SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (Snapcall * _Nonnull)getSnapcall SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
 + (void)releaseSnapcall;
+/// make the rate request after having checked the different argument for objective c
+/// implementation
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     call<objc_SCCall>: object representing the call to rate
+///   </li>
+///   <li>
+///     rate<Int>: the rate to set between 0 and  5
+///   </li>
+///   <li>
+///     requestCallBack<(( _ error: Error?, _ : Bool)>: closure to get the result of the request or to get an error of type snapcallError
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (void)rateCallWithCall:(objc_SCCall * _Nullable)call rate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
 @end
 
 @class NSString;
