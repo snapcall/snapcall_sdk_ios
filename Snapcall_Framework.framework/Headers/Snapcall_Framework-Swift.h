@@ -210,27 +210,158 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 @class PKPushPayload;
 @class objc_SCCall;
 
+/// The Snapcall class expose the necessary function to check the ButtonIdentifier(BID)
+/// and make and receive call. It is accessible by static instance reference from getSnapcall
+/// function.
+/// \code
+/// For a basic call :
+///    Snapcall.getSnapcall().launchCall("bid", nil)
+///
+/// \endcodeTo use Snapcall you need a device with iOS 10 or superior
+/// Don’t forget to add plist Entries for microphone and camera as well as for the voip background mode
+/// You also need to ask the microphonne permission to your user at the proper moment.
+/// you can make it with the snapcall function  :
+/// \code
+///    requestPermission(callback: { result in ... })
+///
+/// \endcodeor let the sdk do it at during the first call.
+/// author:
+/// Pierre Noyelle
 SWIFT_CLASS("_TtC18Snapcall_Framework8Snapcall")
 @interface Snapcall : NSObject
+/// change the name for callkit. This name will appear into callKit UI.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable AppName;)
 + (NSString * _Nullable)AppName SWIFT_WARN_UNUSED_RESULT;
 + (void)setAppName:(NSString * _Nullable)value;
+/// only for call reception
+/// modify the ringtone heard when a call is received
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable ringtoneSound;)
 + (NSString * _Nullable)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
 + (void)setRingtoneSound:(NSString * _Nullable)value;
+/// Data of an image that will be used into callKit UI
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Nullable callIconTemplate;)
 + (NSData * _Nullable)callIconTemplate SWIFT_WARN_UNUSED_RESULT;
 + (void)setCallIconTemplate:(NSData * _Nullable)value;
-- (BOOL)registerUserWithCredential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Null_unspecified)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+/// make a http request in order to save your user token into our DataBase
+/// this will allow you to make call to this device.
+/// \param credential PKPushCredentials are the credential given when you register for VOIP push notification
+///
+/// \param identifier if you already get a token and you want to update it by replacing the already linked device.
+///
+/// \param customClientIdentifier the id for your user. it will be linked to your app and you will be able to make call to this device
+///
+/// \param applicationName <String> the name you registered for snapcall usage (linked to your VOIP certicate)
+///
+/// \param snapcallIdentifierCallBack closure to get the result of the request. The argument will be a token that you can use in order to call this device
+///
+///
+/// returns:
+/// <Bool> if the request can be done.
+- (BOOL)registerUserWithCredential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Nonnull)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+/// make a http request in order to save your user token into our DataBase
+/// this will allow you to make call to this device.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     credential: PKPushCredentials in String formats
+///   </li>
+///   <li>
+///     identifier:if you already get a token and you want to update it by replacing the already linked device.
+///   </li>
+///   <li>
+///     customClientIdentifier:  the id for your user. it will be linked to your app and you will be able to make call to this device
+///   </li>
+///   <li>
+///     applicationName:<String> the name you registered for snapcall usage (linked to your VOIP certicate)
+///   </li>
+///   <li>
+///     snapcallIdentifierCallBack: closure to get the result of the request. The argument will be a token that you can use in order to call this device
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <Bool> if the request can be done.
 - (BOOL)registerUserWithToken:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Nonnull)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+/// active a user. Basically it will block or unblock the ability to receive call for this user
+/// \param active the status wanted
+///
+/// \param credential the token given by the VOIP push registration
+///
+/// \param identifier the identifier given by snapcall or nil
+///
+/// \param customClientIdentifier the identifier you set or nil
+///
+/// \param applicationName the name of your project into snapcall
+///
+/// \param snapcallCallBack a closure to get the result of the request
+///
+///
+/// returns:
+/// return false if the rquest can’t be made
 - (BOOL)setUserActiveWithActive:(BOOL)active credential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+/// active a user. Basically it will block or unblock the ability to receive call for this user
+/// \param active the status wanted
+///
+/// \param token the token given by the VOIP push registration in a String format
+///
+/// \param identifier the identifier given by snapcall or nil
+///
+/// \param customClientIdentifier the identifier you set or nil
+///
+/// \param applicationName the name of your project into snapcall
+///
+/// \param snapcallCallBack a closure to get the result of the request
+///
+///
+/// returns:
+/// return false if the rquest can’t be made
 - (BOOL)setUserActiveWithActive:(BOOL)active token:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+/// request to get the status of a bid
+/// will return false if this BID is curently closed (out of shedule) or
+/// if you put it inactive on the snapcall Dashboard
+/// \param bid_id the button identifier you use to make call
+///
+/// \param snapcallCallBack a closure to get the result of the request
+///
+///
+/// returns:
+/// a boolean set to false if the request can’t be made.
 - (BOOL)buttonIsClosedWithBid_id:(NSString * _Nonnull)bid_id snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+/// launch a Call with the button identifier created into the dashboard.
+/// \param bidId identifier from your button in the dashboard
+///
+/// \param parameter parameter to customise your call or nil
+///
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId sendClientMessage:(void (^ _Nonnull)(NSString * _Nonnull))sendClientMessage parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// launch a Call to one of your user linked to the identifier
+/// \param bidId button identifier given by the dashboard
+///
+/// \param applicationName the application you register into snapcall
+///
+/// \param customClientIdentifier the identifier you set when registering your user.
+///
+/// \param parameter parameter to customise your call or nil
+///
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId applicationName:(NSString * _Nonnull)applicationName customClientIdentifier:(NSString * _Nonnull)customClientIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// launch a Call to one of your user linked to the identifier given by snapcall when
+/// you call the register function.
+/// \param bidId button identifier given by the dashboard
+///
+/// \param snapcallIdentifier identifier received into registerUser
+///
+/// \param parameter parameter to customise your call or nil
+///
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId snapcallIdentifier:(NSString * _Nonnull)snapcallIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)restorCallUI SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// transform the PKPushpayload received into readable String Data
+/// \param pushKitPayload the payload received
+///
+///
+/// returns:
+/// nil in case of error or the decoded payload
 - (NSString * _Nullable)decodePushDataWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)receiveCallWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)requestPermissionWithCallback:(void (^ _Nonnull)(BOOL))callback;
@@ -242,32 +373,24 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Nullable callI
 /// returns:
 /// <Bool> if the permission has been granted
 - (BOOL)requestPermission SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED;
+/// check the status for the necessary permission required to launch a call
+///
+/// returns:
+/// true if the permissions are granted by the user
 - (BOOL)isPermissionRequestGranted SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (Snapcall * _Nonnull)getSnapcall SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// release the static instance
 + (void)releaseSnapcall;
 /// make the rate request after having checked the different argument for objective c
 /// implementation
-/// author:
-/// Pierre Noyelle
-/// <ul>
-///   <li>
-///     Parameters:
-///   </li>
-///   <li>
-///     call<objc_SCCall>: object representing the call to rate
-///   </li>
-///   <li>
-///     rate<Int>: the rate to set between 0 and  5
-///   </li>
-///   <li>
-///     requestCallBack<(( _ error: Error?, _ : Bool)>: closure to get the result of the request or to get an error of type snapcallError
-///   </li>
-/// </ul>
+/// \param call object representing the call to rate
 ///
-/// returns:
-/// <void>
+/// \param rate the rate to set between 0 and  5
+///
+/// \param requestCallBack closure to get the result of the request or to get an error of type snapcallError
+///
 - (void)rateCallWithCall:(objc_SCCall * _Nullable)call rate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
 @end
 
@@ -305,22 +428,39 @@ SWIFT_PROTOCOL("_TtP18Snapcall_Framework22Snapcall_eventListener_")
 
 SWIFT_CLASS("_TtC18Snapcall_Framework27Snapcall_External_Parameter")
 @interface Snapcall_External_Parameter : NSObject
-@property (nonatomic, copy) NSString * _Null_unspecified urlImage;
-@property (nonatomic, copy) NSString * _Null_unspecified nameImage;
+/// Image Url in order to replace the logo into the default user interface
+@property (nonatomic, copy) NSString * _Nullable urlImage;
+/// The name of your image into your asset in order to replace the logo into the default user interface
+@property (nonatomic, copy) NSString * _Nullable nameImage;
+/// allow to add a return button to call UI. It will be used to return into your UI during the call
+/// you must have added a way for him to get back to the call ui to hangup
 @property (nonatomic) BOOL shouldReturn;
-@property (nonatomic, copy) NSString * _Null_unspecified callTitle;
-@property (nonatomic, copy) NSString * _Null_unspecified displayName;
-@property (nonatomic, copy) NSString * _Null_unspecified displayBrand;
-@property (nonatomic, copy) NSString * _Null_unspecified senderName;
-@property (nonatomic, copy) NSString * _Null_unspecified senderBrand;
+/// the string you want to be placed on top of the default call UI
+@property (nonatomic, copy) NSString * _Nullable callTitle;
+/// the name added into the callUI
+@property (nonatomic, copy) NSString * _Nullable displayName;
+/// the brand added into the callUI
+@property (nonatomic, copy) NSString * _Nullable displayBrand;
+/// set the name to send to the remote leg ( only for client to client call )
+@property (nonatomic, copy) NSString * _Nullable senderName;
+/// set the second name to send to the remote leg ( only for client to client call )
+@property (nonatomic, copy) NSString * _Nullable senderBrand;
+/// hide the cart icon from the call UI
 @property (nonatomic) BOOL hideCart;
-@property (nonatomic, strong) UIColor * _Null_unspecified textColor;
-@property (nonatomic, strong) UIColor * _Null_unspecified backgroundColor;
-@property (nonatomic, strong) NSMutableDictionary * _Null_unspecified externalContext;
-@property (nonatomic, copy) NSString * _Null_unspecified pushTransfertData;
-@property (nonatomic, strong) UIFontDescriptor * _Null_unspecified fontDescriptor;
-@property (nonatomic, copy) NSString * _Null_unspecified androidNotificationTitle;
-@property (nonatomic, copy) NSString * _Null_unspecified androidNotificatiobBody;
+/// change the text color for the default call UI
+@property (nonatomic, strong) UIColor * _Nullable textColor;
+/// change the background color for the default call UI
+@property (nonatomic, strong) UIColor * _Nullable backgroundColor;
+/// the context you want to link into the database to the call
+@property (nonatomic, strong) NSMutableDictionary * _Nullable externalContext;
+/// data to directly send to the remote party only for client to client
+@property (nonatomic, copy) NSString * _Nullable pushTransfertData;
+/// the font for the default call UI
+@property (nonatomic, strong) UIFontDescriptor * _Nullable fontDescriptor;
+/// the title for the notification sent to an android phone only for client to client
+@property (nonatomic, copy) NSString * _Nullable androidNotificationTitle;
+/// the body for the notification sent to an android phone only for client to client
+@property (nonatomic, copy) NSString * _Nullable androidNotificatiobBody;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -838,27 +978,158 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 @class PKPushPayload;
 @class objc_SCCall;
 
+/// The Snapcall class expose the necessary function to check the ButtonIdentifier(BID)
+/// and make and receive call. It is accessible by static instance reference from getSnapcall
+/// function.
+/// \code
+/// For a basic call :
+///    Snapcall.getSnapcall().launchCall("bid", nil)
+///
+/// \endcodeTo use Snapcall you need a device with iOS 10 or superior
+/// Don’t forget to add plist Entries for microphone and camera as well as for the voip background mode
+/// You also need to ask the microphonne permission to your user at the proper moment.
+/// you can make it with the snapcall function  :
+/// \code
+///    requestPermission(callback: { result in ... })
+///
+/// \endcodeor let the sdk do it at during the first call.
+/// author:
+/// Pierre Noyelle
 SWIFT_CLASS("_TtC18Snapcall_Framework8Snapcall")
 @interface Snapcall : NSObject
+/// change the name for callkit. This name will appear into callKit UI.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable AppName;)
 + (NSString * _Nullable)AppName SWIFT_WARN_UNUSED_RESULT;
 + (void)setAppName:(NSString * _Nullable)value;
+/// only for call reception
+/// modify the ringtone heard when a call is received
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable ringtoneSound;)
 + (NSString * _Nullable)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
 + (void)setRingtoneSound:(NSString * _Nullable)value;
+/// Data of an image that will be used into callKit UI
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Nullable callIconTemplate;)
 + (NSData * _Nullable)callIconTemplate SWIFT_WARN_UNUSED_RESULT;
 + (void)setCallIconTemplate:(NSData * _Nullable)value;
-- (BOOL)registerUserWithCredential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Null_unspecified)identifier customClientIdentifier:(NSString * _Null_unspecified)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Null_unspecified)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+/// make a http request in order to save your user token into our DataBase
+/// this will allow you to make call to this device.
+/// \param credential PKPushCredentials are the credential given when you register for VOIP push notification
+///
+/// \param identifier if you already get a token and you want to update it by replacing the already linked device.
+///
+/// \param customClientIdentifier the id for your user. it will be linked to your app and you will be able to make call to this device
+///
+/// \param applicationName <String> the name you registered for snapcall usage (linked to your VOIP certicate)
+///
+/// \param snapcallIdentifierCallBack closure to get the result of the request. The argument will be a token that you can use in order to call this device
+///
+///
+/// returns:
+/// <Bool> if the request can be done.
+- (BOOL)registerUserWithCredential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Nonnull)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+/// make a http request in order to save your user token into our DataBase
+/// this will allow you to make call to this device.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     credential: PKPushCredentials in String formats
+///   </li>
+///   <li>
+///     identifier:if you already get a token and you want to update it by replacing the already linked device.
+///   </li>
+///   <li>
+///     customClientIdentifier:  the id for your user. it will be linked to your app and you will be able to make call to this device
+///   </li>
+///   <li>
+///     applicationName:<String> the name you registered for snapcall usage (linked to your VOIP certicate)
+///   </li>
+///   <li>
+///     snapcallIdentifierCallBack: closure to get the result of the request. The argument will be a token that you can use in order to call this device
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <Bool> if the request can be done.
 - (BOOL)registerUserWithToken:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallIdentifierCallBack:(void (^ _Nonnull)(NSString * _Nullable))snapcallIdentifierCallBack SWIFT_WARN_UNUSED_RESULT;
+/// active a user. Basically it will block or unblock the ability to receive call for this user
+/// \param active the status wanted
+///
+/// \param credential the token given by the VOIP push registration
+///
+/// \param identifier the identifier given by snapcall or nil
+///
+/// \param customClientIdentifier the identifier you set or nil
+///
+/// \param applicationName the name of your project into snapcall
+///
+/// \param snapcallCallBack a closure to get the result of the request
+///
+///
+/// returns:
+/// return false if the rquest can’t be made
 - (BOOL)setUserActiveWithActive:(BOOL)active credential:(PKPushCredentials * _Nonnull)credential identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+/// active a user. Basically it will block or unblock the ability to receive call for this user
+/// \param active the status wanted
+///
+/// \param token the token given by the VOIP push registration in a String format
+///
+/// \param identifier the identifier given by snapcall or nil
+///
+/// \param customClientIdentifier the identifier you set or nil
+///
+/// \param applicationName the name of your project into snapcall
+///
+/// \param snapcallCallBack a closure to get the result of the request
+///
+///
+/// returns:
+/// return false if the rquest can’t be made
 - (BOOL)setUserActiveWithActive:(BOOL)active token:(NSString * _Nonnull)token identifier:(NSString * _Nullable)identifier customClientIdentifier:(NSString * _Nullable)customClientIdentifier applicationName:(NSString * _Nonnull)applicationName snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+/// request to get the status of a bid
+/// will return false if this BID is curently closed (out of shedule) or
+/// if you put it inactive on the snapcall Dashboard
+/// \param bid_id the button identifier you use to make call
+///
+/// \param snapcallCallBack a closure to get the result of the request
+///
+///
+/// returns:
+/// a boolean set to false if the request can’t be made.
 - (BOOL)buttonIsClosedWithBid_id:(NSString * _Nonnull)bid_id snapcallCallBack:(void (^ _Nonnull)(BOOL))snapcallCallBack SWIFT_WARN_UNUSED_RESULT;
+/// launch a Call with the button identifier created into the dashboard.
+/// \param bidId identifier from your button in the dashboard
+///
+/// \param parameter parameter to customise your call or nil
+///
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId sendClientMessage:(void (^ _Nonnull)(NSString * _Nonnull))sendClientMessage parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// launch a Call to one of your user linked to the identifier
+/// \param bidId button identifier given by the dashboard
+///
+/// \param applicationName the application you register into snapcall
+///
+/// \param customClientIdentifier the identifier you set when registering your user.
+///
+/// \param parameter parameter to customise your call or nil
+///
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId applicationName:(NSString * _Nonnull)applicationName customClientIdentifier:(NSString * _Nonnull)customClientIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// launch a Call to one of your user linked to the identifier given by snapcall when
+/// you call the register function.
+/// \param bidId button identifier given by the dashboard
+///
+/// \param snapcallIdentifier identifier received into registerUser
+///
+/// \param parameter parameter to customise your call or nil
+///
 - (void)launchCallWithBidId:(NSString * _Nonnull)bidId snapcallIdentifier:(NSString * _Nonnull)snapcallIdentifier parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)restorCallUI SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// transform the PKPushpayload received into readable String Data
+/// \param pushKitPayload the payload received
+///
+///
+/// returns:
+/// nil in case of error or the decoded payload
 - (NSString * _Nullable)decodePushDataWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)receiveCallWithPushKitPayload:(PKPushPayload * _Nullable)pushKitPayload parameter:(Snapcall_External_Parameter * _Nullable)parameter SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
 - (void)requestPermissionWithCallback:(void (^ _Nonnull)(BOOL))callback;
@@ -870,32 +1141,24 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Nullable callI
 /// returns:
 /// <Bool> if the permission has been granted
 - (BOOL)requestPermission SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED;
+/// check the status for the necessary permission required to launch a call
+///
+/// returns:
+/// true if the permissions are granted by the user
 - (BOOL)isPermissionRequestGranted SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (Snapcall * _Nonnull)getSnapcall SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=10.0);
+/// release the static instance
 + (void)releaseSnapcall;
 /// make the rate request after having checked the different argument for objective c
 /// implementation
-/// author:
-/// Pierre Noyelle
-/// <ul>
-///   <li>
-///     Parameters:
-///   </li>
-///   <li>
-///     call<objc_SCCall>: object representing the call to rate
-///   </li>
-///   <li>
-///     rate<Int>: the rate to set between 0 and  5
-///   </li>
-///   <li>
-///     requestCallBack<(( _ error: Error?, _ : Bool)>: closure to get the result of the request or to get an error of type snapcallError
-///   </li>
-/// </ul>
+/// \param call object representing the call to rate
 ///
-/// returns:
-/// <void>
+/// \param rate the rate to set between 0 and  5
+///
+/// \param requestCallBack closure to get the result of the request or to get an error of type snapcallError
+///
 - (void)rateCallWithCall:(objc_SCCall * _Nullable)call rate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
 @end
 
@@ -933,22 +1196,39 @@ SWIFT_PROTOCOL("_TtP18Snapcall_Framework22Snapcall_eventListener_")
 
 SWIFT_CLASS("_TtC18Snapcall_Framework27Snapcall_External_Parameter")
 @interface Snapcall_External_Parameter : NSObject
-@property (nonatomic, copy) NSString * _Null_unspecified urlImage;
-@property (nonatomic, copy) NSString * _Null_unspecified nameImage;
+/// Image Url in order to replace the logo into the default user interface
+@property (nonatomic, copy) NSString * _Nullable urlImage;
+/// The name of your image into your asset in order to replace the logo into the default user interface
+@property (nonatomic, copy) NSString * _Nullable nameImage;
+/// allow to add a return button to call UI. It will be used to return into your UI during the call
+/// you must have added a way for him to get back to the call ui to hangup
 @property (nonatomic) BOOL shouldReturn;
-@property (nonatomic, copy) NSString * _Null_unspecified callTitle;
-@property (nonatomic, copy) NSString * _Null_unspecified displayName;
-@property (nonatomic, copy) NSString * _Null_unspecified displayBrand;
-@property (nonatomic, copy) NSString * _Null_unspecified senderName;
-@property (nonatomic, copy) NSString * _Null_unspecified senderBrand;
+/// the string you want to be placed on top of the default call UI
+@property (nonatomic, copy) NSString * _Nullable callTitle;
+/// the name added into the callUI
+@property (nonatomic, copy) NSString * _Nullable displayName;
+/// the brand added into the callUI
+@property (nonatomic, copy) NSString * _Nullable displayBrand;
+/// set the name to send to the remote leg ( only for client to client call )
+@property (nonatomic, copy) NSString * _Nullable senderName;
+/// set the second name to send to the remote leg ( only for client to client call )
+@property (nonatomic, copy) NSString * _Nullable senderBrand;
+/// hide the cart icon from the call UI
 @property (nonatomic) BOOL hideCart;
-@property (nonatomic, strong) UIColor * _Null_unspecified textColor;
-@property (nonatomic, strong) UIColor * _Null_unspecified backgroundColor;
-@property (nonatomic, strong) NSMutableDictionary * _Null_unspecified externalContext;
-@property (nonatomic, copy) NSString * _Null_unspecified pushTransfertData;
-@property (nonatomic, strong) UIFontDescriptor * _Null_unspecified fontDescriptor;
-@property (nonatomic, copy) NSString * _Null_unspecified androidNotificationTitle;
-@property (nonatomic, copy) NSString * _Null_unspecified androidNotificatiobBody;
+/// change the text color for the default call UI
+@property (nonatomic, strong) UIColor * _Nullable textColor;
+/// change the background color for the default call UI
+@property (nonatomic, strong) UIColor * _Nullable backgroundColor;
+/// the context you want to link into the database to the call
+@property (nonatomic, strong) NSMutableDictionary * _Nullable externalContext;
+/// data to directly send to the remote party only for client to client
+@property (nonatomic, copy) NSString * _Nullable pushTransfertData;
+/// the font for the default call UI
+@property (nonatomic, strong) UIFontDescriptor * _Nullable fontDescriptor;
+/// the title for the notification sent to an android phone only for client to client
+@property (nonatomic, copy) NSString * _Nullable androidNotificationTitle;
+/// the body for the notification sent to an android phone only for client to client
+@property (nonatomic, copy) NSString * _Nullable androidNotificatiobBody;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
