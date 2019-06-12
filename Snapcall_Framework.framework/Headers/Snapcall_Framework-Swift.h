@@ -685,6 +685,41 @@ SWIFT_CLASS("_TtC18Snapcall_Framework11objc_SCCall")
 
 SWIFT_CLASS("_TtC18Snapcall_Framework18objc_SCClientEvent")
 @interface objc_SCClientEvent : NSObject
+/// return if the speaker is activated
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> if the speaker is activated
+- (BOOL)isSpeaker SWIFT_WARN_UNUSED_RESULT;
+/// return if the microphone is activated
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> micro status
+- (BOOL)isMute SWIFT_WARN_UNUSED_RESULT;
+/// Return the error added to this instance or nil
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> string describing the error
+- (NSError * _Nullable)getError SWIFT_WARN_UNUSED_RESULT;
+/// return true if Internet is up
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> internet status
+- (BOOL)isConnected SWIFT_WARN_UNUSED_RESULT;
+/// return the call object describing the current call.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <SCCall?> current call or nil
+- (objc_SCCall * _Nullable)getCall SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1609,6 +1644,41 @@ SWIFT_CLASS("_TtC18Snapcall_Framework11objc_SCCall")
 
 SWIFT_CLASS("_TtC18Snapcall_Framework18objc_SCClientEvent")
 @interface objc_SCClientEvent : NSObject
+/// return if the speaker is activated
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> if the speaker is activated
+- (BOOL)isSpeaker SWIFT_WARN_UNUSED_RESULT;
+/// return if the microphone is activated
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> micro status
+- (BOOL)isMute SWIFT_WARN_UNUSED_RESULT;
+/// Return the error added to this instance or nil
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> string describing the error
+- (NSError * _Nullable)getError SWIFT_WARN_UNUSED_RESULT;
+/// return true if Internet is up
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> internet status
+- (BOOL)isConnected SWIFT_WARN_UNUSED_RESULT;
+/// return the call object describing the current call.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <SCCall?> current call or nil
+- (objc_SCCall * _Nullable)getCall SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
