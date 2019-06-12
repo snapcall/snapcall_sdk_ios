@@ -192,6 +192,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+@protocol objc_SCClientListener;
+@class NSNumber;
+@class objc_SCClientEvent;
+@class objc_SCCall;
 
 SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduced=10.0)
 @interface SCClient : NSObject
@@ -203,12 +207,66 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 /// returns:
 /// <SCClient>
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (void)objc_setListenerWithListener:(id <objc_SCClientListener> _Nonnull)listener;
+/// send the Hangup event to the call handler that terminate the current call
+/// author:
+/// Pierre Noyelle
+/// \param listener <SCClientListener> : an instance on SCClientListener the protocol which serve to snapcall
+///
+///
+/// throws:
+///
+/// <ul>
+///   <li>
+///     SnapcallNotStarted: throw if you try to call this fonction while no call is processing.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (BOOL)hangupAndReturnError:(NSError * _Nullable * _Nullable)error;
+- (NSNumber * _Nullable)sendInfoWithMessage:(NSMutableDictionary * _Nonnull)message error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// send the mute event to the call handler that will change the microphone status
+/// to on or off. The event onMuteChange will be fired to confirm the change.
+/// author:
+/// Pierre Noyelle
+///
+/// throws:
+///
+/// <ul>
+///   <li>
+///     SnapcallNotStarted: throw if you try to call this fonction while no call is processing.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (BOOL)muteAndReturnError:(NSError * _Nullable * _Nullable)error;
+/// send the Speaker event to the call handler that will change the sound output
+/// to default (BT - HeadPhone - low Speaker) or loud Speaker .
+/// The event onSpeakerChange will be fired to confirm the change.
+/// author:
+/// Pierre Noyelle
+///
+/// throws:
+///
+/// <ul>
+///   <li>
+///     SnapcallNotStarted: throw if you try to call this fonction while no call is processing.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (BOOL)setSpeakerAndReturnError:(NSError * _Nullable * _Nullable)error;
+- (objc_SCClientEvent * _Nullable)objc_getCurrentClientEventAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+- (void)rateCallWithRate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
+- (void)rateCallWithCall:(objc_SCCall * _Nullable)call rate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
 @end
 
 @class PKPushCredentials;
 @class Snapcall_External_Parameter;
 @class PKPushPayload;
-@class objc_SCCall;
 
 /// The Snapcall class expose the necessary function to check the ButtonIdentifier(BID)
 /// and make and receive call. It is accessible by static instance reference from getSnapcall
@@ -966,6 +1024,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+@protocol objc_SCClientListener;
+@class NSNumber;
+@class objc_SCClientEvent;
+@class objc_SCCall;
 
 SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduced=10.0)
 @interface SCClient : NSObject
@@ -977,12 +1039,66 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 /// returns:
 /// <SCClient>
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (void)objc_setListenerWithListener:(id <objc_SCClientListener> _Nonnull)listener;
+/// send the Hangup event to the call handler that terminate the current call
+/// author:
+/// Pierre Noyelle
+/// \param listener <SCClientListener> : an instance on SCClientListener the protocol which serve to snapcall
+///
+///
+/// throws:
+///
+/// <ul>
+///   <li>
+///     SnapcallNotStarted: throw if you try to call this fonction while no call is processing.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (BOOL)hangupAndReturnError:(NSError * _Nullable * _Nullable)error;
+- (NSNumber * _Nullable)sendInfoWithMessage:(NSMutableDictionary * _Nonnull)message error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// send the mute event to the call handler that will change the microphone status
+/// to on or off. The event onMuteChange will be fired to confirm the change.
+/// author:
+/// Pierre Noyelle
+///
+/// throws:
+///
+/// <ul>
+///   <li>
+///     SnapcallNotStarted: throw if you try to call this fonction while no call is processing.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (BOOL)muteAndReturnError:(NSError * _Nullable * _Nullable)error;
+/// send the Speaker event to the call handler that will change the sound output
+/// to default (BT - HeadPhone - low Speaker) or loud Speaker .
+/// The event onSpeakerChange will be fired to confirm the change.
+/// author:
+/// Pierre Noyelle
+///
+/// throws:
+///
+/// <ul>
+///   <li>
+///     SnapcallNotStarted: throw if you try to call this fonction while no call is processing.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// <void>
+- (BOOL)setSpeakerAndReturnError:(NSError * _Nullable * _Nullable)error;
+- (objc_SCClientEvent * _Nullable)objc_getCurrentClientEventAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+- (void)rateCallWithRate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
+- (void)rateCallWithCall:(objc_SCCall * _Nullable)call rate:(NSInteger)rate requestCallBack:(void (^ _Nullable)(NSError * _Nullable, BOOL))requestCallBack;
 @end
 
 @class PKPushCredentials;
 @class Snapcall_External_Parameter;
 @class PKPushPayload;
-@class objc_SCCall;
 
 /// The Snapcall class expose the necessary function to check the ButtonIdentifier(BID)
 /// and make and receive call. It is accessible by static instance reference from getSnapcall
