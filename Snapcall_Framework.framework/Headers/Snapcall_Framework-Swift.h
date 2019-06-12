@@ -586,6 +586,98 @@ typedef SWIFT_ENUM(NSInteger, WebSocketReadyState, closed) {
 /// It serve to make snapcall api request about the call.
 SWIFT_CLASS("_TtC18Snapcall_Framework11objc_SCCall")
 @interface objc_SCCall : NSObject
+/// return the identifier for the call represented by this
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String> identifier for the call
+- (NSString * _Nonnull)getCallIdentifier SWIFT_WARN_UNUSED_RESULT;
+/// return the display name set by the developer or returned by the API
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> Name set on the back office or nil
+- (NSString * _Nullable)getDisplayName SWIFT_WARN_UNUSED_RESULT;
+/// return the brand name set by the developer or returned by the API
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> Brand set on the back office or nil
+- (NSString * _Nullable)getDisplayBrand SWIFT_WARN_UNUSED_RESULT;
+/// return the current state for the call.
+/// You can test this String against static String in SCClient and react properly.
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     <String> SCClient.CREATED: the call has been started waiting for server
+///   </li>
+///   <li>
+///     <String> SCClient.RINGING: the other leg is Contacted and your user enter the waiting queue for an answer
+///   </li>
+///   <li>
+///     <String> SCClient.CONNECTED: the call process normally
+///   </li>
+///   <li>
+///     <String> SCClient.DISCONNECTED: the call has encounter a probleme will re connect when possible
+///   </li>
+/// </ul>
+///
+/// returns:
+///
+- (NSString * _Nullable)getCurrentCallState SWIFT_WARN_UNUSED_RESULT;
+/// current time in Second since call has answer
+/// use it to make a timer.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Int> seconde since start
+- (NSInteger)getTime SWIFT_WARN_UNUSED_RESULT;
+/// Return the data where the call has been created.
+/// usefull if you want to make some sort of call history
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Date?> Date object
+- (NSDate * _Nullable)getStartedData SWIFT_WARN_UNUSED_RESULT;
+/// return the duration of the call in second.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Int> seconde
+- (NSInteger)getDuration SWIFT_WARN_UNUSED_RESULT;
+/// give the Held Status, True if the remote leg has put the call on hold.
+/// if true your user is in a waiting queue until the other leg unhold.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> held status
+- (BOOL)isHeld SWIFT_WARN_UNUSED_RESULT;
+/// In case of Queue Call (agent connected on a web interface) return the
+/// email of the agent that have answer the call.
+/// Appear first after the onAnswer.
+/// Is updated in case of transfert in an onAnswer message.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> mail of the agent
+- (NSString * _Nullable)getAgentMail SWIFT_WARN_UNUSED_RESULT;
+/// True if the call as been transferred once.
+/// True after a second onAnswer in case of queue call.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> transferred status
+- (BOOL)isTransferred SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1418,6 +1510,98 @@ typedef SWIFT_ENUM(NSInteger, WebSocketReadyState, closed) {
 /// It serve to make snapcall api request about the call.
 SWIFT_CLASS("_TtC18Snapcall_Framework11objc_SCCall")
 @interface objc_SCCall : NSObject
+/// return the identifier for the call represented by this
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String> identifier for the call
+- (NSString * _Nonnull)getCallIdentifier SWIFT_WARN_UNUSED_RESULT;
+/// return the display name set by the developer or returned by the API
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> Name set on the back office or nil
+- (NSString * _Nullable)getDisplayName SWIFT_WARN_UNUSED_RESULT;
+/// return the brand name set by the developer or returned by the API
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> Brand set on the back office or nil
+- (NSString * _Nullable)getDisplayBrand SWIFT_WARN_UNUSED_RESULT;
+/// return the current state for the call.
+/// You can test this String against static String in SCClient and react properly.
+/// author:
+/// Pierre Noyelle
+/// <ul>
+///   <li>
+///     <String> SCClient.CREATED: the call has been started waiting for server
+///   </li>
+///   <li>
+///     <String> SCClient.RINGING: the other leg is Contacted and your user enter the waiting queue for an answer
+///   </li>
+///   <li>
+///     <String> SCClient.CONNECTED: the call process normally
+///   </li>
+///   <li>
+///     <String> SCClient.DISCONNECTED: the call has encounter a probleme will re connect when possible
+///   </li>
+/// </ul>
+///
+/// returns:
+///
+- (NSString * _Nullable)getCurrentCallState SWIFT_WARN_UNUSED_RESULT;
+/// current time in Second since call has answer
+/// use it to make a timer.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Int> seconde since start
+- (NSInteger)getTime SWIFT_WARN_UNUSED_RESULT;
+/// Return the data where the call has been created.
+/// usefull if you want to make some sort of call history
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Date?> Date object
+- (NSDate * _Nullable)getStartedData SWIFT_WARN_UNUSED_RESULT;
+/// return the duration of the call in second.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Int> seconde
+- (NSInteger)getDuration SWIFT_WARN_UNUSED_RESULT;
+/// give the Held Status, True if the remote leg has put the call on hold.
+/// if true your user is in a waiting queue until the other leg unhold.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> held status
+- (BOOL)isHeld SWIFT_WARN_UNUSED_RESULT;
+/// In case of Queue Call (agent connected on a web interface) return the
+/// email of the agent that have answer the call.
+/// Appear first after the onAnswer.
+/// Is updated in case of transfert in an onAnswer message.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <String?> mail of the agent
+- (NSString * _Nullable)getAgentMail SWIFT_WARN_UNUSED_RESULT;
+/// True if the call as been transferred once.
+/// True after a second onAnswer in case of queue call.
+/// author:
+/// Pierre Noyelle
+///
+/// returns:
+/// <Bool> transferred status
+- (BOOL)isTransferred SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
