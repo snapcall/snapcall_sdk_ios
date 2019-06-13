@@ -287,12 +287,15 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 /// Pierre Noyelle
 SWIFT_CLASS("_TtC18Snapcall_Framework8Snapcall")
 @interface Snapcall : NSObject
+/// allow to choose to use the snapcall default UI or use your own
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL defaultUserInterfaceOff;)
++ (BOOL)defaultUserInterfaceOff SWIFT_WARN_UNUSED_RESULT;
++ (void)setDefaultUserInterfaceOff:(BOOL)value;
 /// change the name for callkit. This name will appear into callKit UI.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable AppName;)
 + (NSString * _Nullable)AppName SWIFT_WARN_UNUSED_RESULT;
 + (void)setAppName:(NSString * _Nullable)value;
-/// only for call reception
-/// modify the ringtone heard when a call is received
+/// only for call reception modify the ringtone heard when a call is received
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable ringtoneSound;)
 + (NSString * _Nullable)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
 + (void)setRingtoneSound:(NSString * _Nullable)value;
@@ -1246,12 +1249,15 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 /// Pierre Noyelle
 SWIFT_CLASS("_TtC18Snapcall_Framework8Snapcall")
 @interface Snapcall : NSObject
+/// allow to choose to use the snapcall default UI or use your own
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL defaultUserInterfaceOff;)
++ (BOOL)defaultUserInterfaceOff SWIFT_WARN_UNUSED_RESULT;
++ (void)setDefaultUserInterfaceOff:(BOOL)value;
 /// change the name for callkit. This name will appear into callKit UI.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable AppName;)
 + (NSString * _Nullable)AppName SWIFT_WARN_UNUSED_RESULT;
 + (void)setAppName:(NSString * _Nullable)value;
-/// only for call reception
-/// modify the ringtone heard when a call is received
+/// only for call reception modify the ringtone heard when a call is received
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable ringtoneSound;)
 + (NSString * _Nullable)ringtoneSound SWIFT_WARN_UNUSED_RESULT;
 + (void)setRingtoneSound:(NSString * _Nullable)value;
