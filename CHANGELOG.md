@@ -1,7 +1,12 @@
 # CHANGELOG
 
 ## Next Version
+## 5.4.2
+- added info message to and from  the agent. 
+- objective-c compatibility with scclient.  
 
+## 5.4.0
+- custom user interface can be build buy the developer.
 
 ## 5.3.0
 
