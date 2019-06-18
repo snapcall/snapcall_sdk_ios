@@ -1,6 +1,12 @@
 # CHANGELOG
 
 ## Next Version
+
+## 5.4.3 
+### Fixed
+- small bugfix for reconnect before answer
+- bugfix in default ui for speaker and micro button
+
 ## 5.4.2
 - added info message to and from  the agent. 
 - objective-c compatibility with scclient.  
