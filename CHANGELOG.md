@@ -2,6 +2,12 @@
 
 ## Next Version
 
+## 5.5.1
+- xcode 11 compatible version
+## 5.5.0
+### Added
+- develloper can make their own call UI using the new evetn system 
+
 ## 5.4.3 
 ### Fixed
 - small bugfix for reconnect before answer
