@@ -1,6 +1,15 @@
 # CHANGELOG
 
 ## Next Version
+## 5.5.1
+
+- update for iOS13 and xcode 11
+
+### Fixed
+- UI on iOS13
+
+## 5.5.0
+- internal change
 
 ## 5.4.3 
 ### Fixed
