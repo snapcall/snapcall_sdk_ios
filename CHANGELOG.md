@@ -1,6 +1,10 @@
 # CHANGELOG
 
 ## Next Version
+
+## 5.5.2
+- small fix about media connection 
+
 ## 5.5.1
 
 - update for iOS13 and xcode 11
