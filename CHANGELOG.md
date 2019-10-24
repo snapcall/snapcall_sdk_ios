@@ -1,6 +1,13 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.0
+### Added 
+- call reception in your own app with pushkit
+
+### Fixed
+- media connection failure on few network
+
 ## 5.5.1
 
 - update for iOS13 and xcode 11
