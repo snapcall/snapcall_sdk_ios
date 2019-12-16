@@ -2,6 +2,9 @@
 
 ## Next Version
 
+## 5.5.3
+- swift 5.1.3 and xcode 11.3 support
+
 ## 5.5.2
 - small fix about media connection 
 
