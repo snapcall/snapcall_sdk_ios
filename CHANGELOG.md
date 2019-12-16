@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.1
+- build update for xcode 11.3 and swift 5.1.3
+
 ## 5.6.0
 ### Added 
 - call reception in your own app with pushkit

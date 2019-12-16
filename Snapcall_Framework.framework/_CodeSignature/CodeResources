@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Snapcall_Framework-Swift.h</key>
 		<data>
-		wWJzcq8TIwZaFbF/GMejgkt7orY=
+		KZYMVUfJRYarNeSGEl0+Ilz3kDw=
 		</data>
 		<key>Headers/Snapcall_Framework.h</key>
 		<data>
@@ -14,47 +14,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		CUuSozrSXb4kC4yRW+xnOwUbEXk=
+		AHm6owvDy5lYY2MhwlKUfiMMX5Y=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm.swiftdoc</key>
 		<data>
-		Q6V3kVqilrkeGO5LMEH+O9DQF4s=
+		3FLeElvs/kX5YukrWT3/8SEQHmQ=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm.swiftmodule</key>
 		<data>
-		6RtkzsVz7pk5xBJubLchJeKaHts=
+		7C9KGWnE2WXJOCkN/4kGOk+4GqU=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		VrTpYrFnen12F8fsSMA6ulBVM2g=
+		3lWCfpn+kNBwmQdx6ksUABy4A9g=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		R+hv3Ny5k3rlV4t/fqwr4+2fMgM=
+		eNADKuilvg2lMTe0LNrXhYeM8So=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		VrTpYrFnen12F8fsSMA6ulBVM2g=
+		3lWCfpn+kNBwmQdx6ksUABy4A9g=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		R+hv3Ny5k3rlV4t/fqwr4+2fMgM=
+		eNADKuilvg2lMTe0LNrXhYeM8So=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<data>
-		Q6V3kVqilrkeGO5LMEH+O9DQF4s=
+		3FLeElvs/kX5YukrWT3/8SEQHmQ=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<data>
-		6RtkzsVz7pk5xBJubLchJeKaHts=
+		7C9KGWnE2WXJOCkN/4kGOk+4GqU=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7.swiftdoc</key>
 		<data>
-		Q6V3kVqilrkeGO5LMEH+O9DQF4s=
+		3FLeElvs/kX5YukrWT3/8SEQHmQ=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7.swiftmodule</key>
 		<data>
-		6RtkzsVz7pk5xBJubLchJeKaHts=
+		7C9KGWnE2WXJOCkN/4kGOk+4GqU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -67,11 +67,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wWJzcq8TIwZaFbF/GMejgkt7orY=
+			KZYMVUfJRYarNeSGEl0+Ilz3kDw=
 			</data>
 			<key>hash2</key>
 			<data>
-			2lVg3+zY0++QK1Ayea2lTC7e6wgdItEImw03hZ0zfhU=
+			qbcKCf1q/n+ue8dHYGyasMI8Ig0Arhj7h4aWwsNVKOc=
 			</data>
 		</dict>
 		<key>Headers/Snapcall_Framework.h</key>
@@ -89,110 +89,110 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Q6V3kVqilrkeGO5LMEH+O9DQF4s=
+			3FLeElvs/kX5YukrWT3/8SEQHmQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			lsmttYLdu7awu5ZtSdYFP0n4nW2zonr06GYrBH0oZx8=
+			Co5LLUue8B/RW9ca6Rb1trRMl8/QyQsbCcar5Kzm7kY=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6RtkzsVz7pk5xBJubLchJeKaHts=
+			7C9KGWnE2WXJOCkN/4kGOk+4GqU=
 			</data>
 			<key>hash2</key>
 			<data>
-			DgoTzPMjU7u4nDUBTKy9Te85JMnfg8owY9+QiBWqf3g=
+			y9+QOctU05sAjFabuj/nKnvlXilgPc5v8jNc/MilxkU=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VrTpYrFnen12F8fsSMA6ulBVM2g=
+			3lWCfpn+kNBwmQdx6ksUABy4A9g=
 			</data>
 			<key>hash2</key>
 			<data>
-			zlkr7xLaRGYIjjN+JBRz0OC3RLI+FfZnTwLrt68UQvc=
+			z0OS2nAJ+iv7eiHRmJ+WxdUr1ftIkK/5JKJacDpiQM8=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			R+hv3Ny5k3rlV4t/fqwr4+2fMgM=
+			eNADKuilvg2lMTe0LNrXhYeM8So=
 			</data>
 			<key>hash2</key>
 			<data>
-			n6C2Lv3+HJ4qLI8Pxp7OwRW+sSs7oTc4IRjtQwKoKtI=
+			j2618/umnM8vfCRwXTv82ArjLSVc6rvk1Z+BYElSdps=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VrTpYrFnen12F8fsSMA6ulBVM2g=
+			3lWCfpn+kNBwmQdx6ksUABy4A9g=
 			</data>
 			<key>hash2</key>
 			<data>
-			zlkr7xLaRGYIjjN+JBRz0OC3RLI+FfZnTwLrt68UQvc=
+			z0OS2nAJ+iv7eiHRmJ+WxdUr1ftIkK/5JKJacDpiQM8=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			R+hv3Ny5k3rlV4t/fqwr4+2fMgM=
+			eNADKuilvg2lMTe0LNrXhYeM8So=
 			</data>
 			<key>hash2</key>
 			<data>
-			n6C2Lv3+HJ4qLI8Pxp7OwRW+sSs7oTc4IRjtQwKoKtI=
+			j2618/umnM8vfCRwXTv82ArjLSVc6rvk1Z+BYElSdps=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Q6V3kVqilrkeGO5LMEH+O9DQF4s=
+			3FLeElvs/kX5YukrWT3/8SEQHmQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			lsmttYLdu7awu5ZtSdYFP0n4nW2zonr06GYrBH0oZx8=
+			Co5LLUue8B/RW9ca6Rb1trRMl8/QyQsbCcar5Kzm7kY=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6RtkzsVz7pk5xBJubLchJeKaHts=
+			7C9KGWnE2WXJOCkN/4kGOk+4GqU=
 			</data>
 			<key>hash2</key>
 			<data>
-			DgoTzPMjU7u4nDUBTKy9Te85JMnfg8owY9+QiBWqf3g=
+			y9+QOctU05sAjFabuj/nKnvlXilgPc5v8jNc/MilxkU=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Q6V3kVqilrkeGO5LMEH+O9DQF4s=
+			3FLeElvs/kX5YukrWT3/8SEQHmQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			lsmttYLdu7awu5ZtSdYFP0n4nW2zonr06GYrBH0oZx8=
+			Co5LLUue8B/RW9ca6Rb1trRMl8/QyQsbCcar5Kzm7kY=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/armv7.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6RtkzsVz7pk5xBJubLchJeKaHts=
+			7C9KGWnE2WXJOCkN/4kGOk+4GqU=
 			</data>
 			<key>hash2</key>
 			<data>
-			DgoTzPMjU7u4nDUBTKy9Te85JMnfg8owY9+QiBWqf3g=
+			y9+QOctU05sAjFabuj/nKnvlXilgPc5v8jNc/MilxkU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
