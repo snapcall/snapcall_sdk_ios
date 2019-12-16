@@ -10,8 +10,9 @@ see [Snapcall documentation](https://doc.snapcall.io/#ios)
 
 ## carthage
 
-github "snapcall/snapcall_sdk_ios" == 5.6.1
+github "snapcall/snapcall_sdk_ios" == 5.6.1-bitcode
 
 ## cocoapod
 
-pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.6.1'
+pod 'iOSWebRTCFramework', :podspec => 'https://raw.githubusercontent.com/pnoyelle/iOSWebRTCFramework/76.0.0.bitcode/iOSWebRTCFramework.podspec' 
+pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.6.1-bitcode'
