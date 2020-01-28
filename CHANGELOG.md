@@ -2,11 +2,14 @@
 
 ## Next Version
 
+## 5.5.4
+- fix objective c compatibility due to apple change for header. 
+
 ## 5.5.3
 - swift 5.1.3 and xcode 11.3 support
 
 ## 5.5.2
-- small fix about media connection 
+- small fix about media connection
 
 ## 5.5.1
 
@@ -18,13 +21,13 @@
 ## 5.5.0
 - internal change
 
-## 5.4.3 
+## 5.4.3
 ### Fixed
 - small bugfix for reconnect before answer
 - bugfix in default ui for speaker and micro button
 
 ## 5.4.2
-- added info message to and from  the agent. 
+- added info message to and from  the agent.
 - objective-c compatibility with scclient.  
 
 ## 5.4.0
@@ -32,12 +35,12 @@
 
 ## 5.3.0
 
-- formate snapcall context format 
-- context as dictionary to be sure to converte him to json 
+- formate snapcall context format
+- context as dictionary to be sure to converte him to json
 
 ## 5.2.0
 
-- Re-write Event System 
+- Re-write Event System
 - Background custom color
 - framework build script refont to build each arch needed
 - integrate SwiftWebSocket without using cocoapod
@@ -49,4 +52,3 @@
 - inter app call
 - customisation
 - Add CHANGELOG.md
-
