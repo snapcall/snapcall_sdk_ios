@@ -10,8 +10,8 @@ see [Snapcall documentation](https://doc.snapcall.io/#ios)
 
 ## carthage
 
-github "snapcall/snapcall_sdk_ios" == 5.6.2
+github "snapcall/snapcall_sdk_ios" 'xcode-beta-12-4/5.6.3'
 
 ## cocoapod
 
-pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.6.2'
+pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :branch => 'xcode-beta-12-4/5.6.3'

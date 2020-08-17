@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.3
+- build update for xcode12 beta 
+
 ## 5.6.2
 - allow to change icon color
 - call reception fix
