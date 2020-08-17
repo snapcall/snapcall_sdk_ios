@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = 'https://web.snapcall.io/'
   spec.authors      = { 'Noyelle Pierre' => 'noyelle.pierre@gmail.com' }
   spec.summary      = 'Make snapcall call with ios'
-  spec.source       = { :git => 'https://github.com/snapcall/snapcall_sdk_ios.git', :branch => 'xcode-beta-12-4/5.6.3' }
+  spec.source       = { :git => 'https://github.com/snapcall/snapcall_sdk_ios.git', :tag => '5.6.3' }
 
 spec.ios.deployment_target  = '10.0'
 spec.vendored_frameworks = 'Snapcall_Framework.framework'
