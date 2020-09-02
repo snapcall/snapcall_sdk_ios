@@ -1,6 +1,11 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.4
+- bottom padding for devices with home indicator.
+- text for connection state updated to connecting.
+
+## 5.6.3 build xcode beta.
 ## 5.6.2
 - allow to change icon color
 - call reception fix
