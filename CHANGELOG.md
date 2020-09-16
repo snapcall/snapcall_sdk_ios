@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.5
+- build update for xcode 12 gm.
 ## 5.6.4
 - bottom padding for devices with home indicator.
 - text for connection state updated to connecting.
