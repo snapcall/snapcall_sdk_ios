@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.6
+- build update: fixed issue with simulator.
 ## 5.6.5
 - build update for xcode 12 gm.
 ## 5.6.4
