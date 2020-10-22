@@ -1,5 +1,5 @@
 # Snapcall IOS SDK
-version 5.6.6 : fix simulator issue 
+version 5.6.6-xcode11.7 : fix simulator issue , build for xcode 11.7
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ## Documentation
@@ -10,8 +10,8 @@ see [Snapcall documentation](https://doc.snapcall.io/#ios)
 
 ## carthage
 
-github "snapcall/snapcall_sdk_ios" == 5.6.6
+github "snapcall/snapcall_sdk_ios" == 5.6.6-xcode11.7
 
 ## cocoapod
 
-pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.6.6'
+pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :branch => '5.6.6-xcode11.7'
