@@ -16,7 +16,7 @@ let package = Package(
     targets: [
       .binaryTarget(
       	    name: "Snapcall_Framework",
-            path: "./Snapcall_Framework.xcframework",
+            path: "./Snapcall_Framework.xcframework"
 	  )
     ]
 )
