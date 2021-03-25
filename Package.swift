@@ -11,13 +11,12 @@ let package = Package(
             targets: ["Snapcall_Framework"]),
     ],
     dependencies: [
- 		.package(url:"https://github.com/pnoyelle/WebRTC_IOS", .exact("1.4455.0"))
+ 		.package(name: "WebRTC_IOS", url:"https://github.com/pnoyelle/WebRTC_IOS", .exact("1.4455.0"))
     ],
     targets: [
       .binaryTarget(
       	    name: "Snapcall_Framework",
             path: "./Snapcall_Framework.xcframework",
-            dependencies: ["WebRTC_IOS"]
 	  )
     ]
 )
