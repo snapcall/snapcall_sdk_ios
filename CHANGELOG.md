@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.9
+- Swift package manager support
+- dependency update: WebRTC.
 ## 5.6.8
 - build update for xcode 12.3.
 ## 5.6.7
