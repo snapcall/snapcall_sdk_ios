@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
   spec.name         = 'Snapcall_Framework'
-  spec.version      = '5.6.8'
+  spec.version      = '5.6.9'
   spec.license      = { :type => 'Custom' }
   spec.homepage     = 'https://web.snapcall.io/'
   spec.authors      = { 'Noyelle Pierre' => 'noyelle.pierre@gmail.com' }
   spec.summary      = 'Make snapcall call with ios'
-  spec.source       = { :git => 'https://github.com/snapcall/iOS_framework_release.git', :tag => '5.6.8' }
+  spec.source       = { :git => 'https://github.com/snapcall/snapcall_sdk_ios.git', :tag => '5.6.9' }
 
 spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
@@ -25,5 +25,5 @@ spec.vendored_frameworks = 'Snapcall_Framework.framework'
   spec.ios.framework  = 'CoreTelephony'
   spec.library = 'z' 
 
-spec.dependency 'iOSWebRTCFramework' , '76'
+spec.dependency 'WebRTC_IOS' , '1.4455.0'
 end
