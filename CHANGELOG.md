@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## Next Version
+## 5.6.10
+- added arm 64 simulator binary
 ## 5.6.9
 - Swift package manager support
 - dependency update: WebRTC.

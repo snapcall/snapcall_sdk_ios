@@ -11,7 +11,7 @@ see [Snapcall documentation](https://doc.snapcall.io/#ios)
 
 ## carthage
 
-github "snapcall/snapcall_sdk_ios" == 5.6.9
+github "snapcall/snapcall_sdk_ios" == 5.6.10
 
 ## cocoapod
 
@@ -20,4 +20,7 @@ pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios'
 ## Swift Package Manager
 
 https://github.com/snapcall/snapcall_sdk_ios
-https://github.com/snapcall/WebRTC_IOS
+
+dependency : 
+
+https://github.com/snapcall/WebRTC_IOS tag `1.6.0` or `1.6.0-bitcode` if you use bitcode
