@@ -3,7 +3,7 @@ import PackageDescription
 let package = Package(
     name: "Snapcall_Framework",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v10)
     ],
     products: [
         .library(
@@ -11,7 +11,7 @@ let package = Package(
             targets: ["Snapcall_Framework"]),
     ],
     dependencies: [
- 		.package(name: "WebRTC_IOS", url:"https://github.com/pnoyelle/WebRTC_IOS", .exact("1.4455.0"))
+ 		.package(name: "WebRTC_IOS", url:"https://github.com/pnoyelle/WebRTC_IOS", .exact("1.6.0-bitcode"))
     ],
     targets: [
       .binaryTarget(
