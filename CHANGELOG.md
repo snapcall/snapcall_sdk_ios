@@ -1,6 +1,14 @@
 # CHANGELOG
 
 ## Next Version
+## 5.7.0
+- Agent saved in keychain, voip call to agent
+- Partner API
+- API updateUI to reload UI and appear/dismiss event
+- UI full refactoring with video
+- Agent call reception in waiting mod
+- Agent API
+
 ## 5.6.10
 - added arm 64 simulator binary
 ## 5.6.9
