@@ -11,11 +11,11 @@ see [Snapcall documentation](https://doc.snapcall.io/#ios)
 
 ## carthage
 
-github "snapcall/snapcall_sdk_ios" == 5.7.0
+github "snapcall/snapcall_sdk_ios" == 5.7.1
 
 ## cocoapod
 
-pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.7.0'
+pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.7.1'
 
 ## Swift Package Manager
 

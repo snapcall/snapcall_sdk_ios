@@ -44,39 +44,47 @@ open class DataAPIResult {
 @_inheritsConvenienceInitializers @objc public class CallViewProperties : ObjectiveC.NSObject {
   @objc override dynamic public init()
   @objc public func setShouldBack(shouldBack: Swift.Bool) -> Snapcall_Framework.CallViewProperties
-  public func setIconColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
-  public func getIconColor() -> UIKit.UIColor
-  public func getHangupBackgroundColor() -> UIKit.UIColor
-  public func setBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
-  public func setTextColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setIconColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getIconColor() -> UIKit.UIColor
+  @objc public func setBackColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getBackColor() -> UIKit.UIColor
+  @objc public func setHideColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getHideColor() -> UIKit.UIColor
+  @objc public func setHangupBackgroundColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setTextColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   public func getTextColor() -> UIKit.UIColor
-  public func setTextColorState(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setTextColorState(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   public func getTextColorState() -> UIKit.UIColor
   public func getBackgroundColor() -> UIKit.UIColor
-  public func setActionBarBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setActionBarBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   public func getActionBarBackgroundColor() -> UIKit.UIColor
   public func getIconBGColor() -> UIKit.UIColor
-  public func setBackgroundBlur(_ blur: Swift.Bool) -> Snapcall_Framework.CallViewProperties
+  @objc public func setIconBGColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getUserImageBGColor() -> UIKit.UIColor
+  @objc public func setUserImageBGColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setBackgroundBlur(_ blur: Swift.Bool) -> Snapcall_Framework.CallViewProperties
   public func useBackgroundBlur() -> Swift.Bool
-  public func setCallName(_ name: Swift.String) -> Snapcall_Framework.CallViewProperties
+  @objc public func setCallName(_ name: Swift.String) -> Snapcall_Framework.CallViewProperties
   public func getCallName() -> Swift.String
-  public func setAppLabel(_ name: Swift.String) -> Snapcall_Framework.CallViewProperties
+  @objc public func setAppLabel(_ name: Swift.String) -> Snapcall_Framework.CallViewProperties
   public func getAppLabel() -> Swift.String
-  public func setUserImage(_ image: UIKit.UIImage) -> Snapcall_Framework.CallViewProperties
+  @objc public func setUserImage(_ image: UIKit.UIImage) -> Snapcall_Framework.CallViewProperties
   public func getUserImage() -> UIKit.UIImage?
-  public func setBrandImage(_ image: UIKit.UIImage) -> Snapcall_Framework.CallViewProperties
+  @objc public func setBrandImage(_ image: UIKit.UIImage) -> Snapcall_Framework.CallViewProperties
   @objc deinit
 }
-public class SCLog {
-  public static var verbose: Swift.Bool
-  public static var debug: Swift.Bool
-  public static var error: Swift.Bool
-  public static var info: Swift.Bool
+@objc public class SCLog : ObjectiveC.NSObject {
+  @objc public static var verbose: Swift.Bool
+  @objc public static var debug: Swift.Bool
+  @objc public static var error: Swift.Bool
+  @objc public static var info: Swift.Bool
   public init(file: Swift.String, object: Swift.String)
   public func v(_ method: Swift.String, _ message: Swift.String?)
   public func d(_ method: Swift.String, _ message: Swift.String?)
   public func e(_ method: Swift.String, _ message: Swift.String?)
   public func i(_ method: Swift.String, _ message: Swift.String?)
+  @objc override dynamic public init()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class SCClientEventObjC : ObjectiveC.NSObject {
@@ -89,8 +97,8 @@ public class SCLog {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class SCCallObjC : ObjectiveC.NSObject {
-  public func getLocalVideoInfo() -> Snapcall_Framework.VideoInfo
-  public func getRemoteVideoInfo() -> Snapcall_Framework.VideoInfo
+  @objc public func getLocalVideoInfo() -> Snapcall_Framework.VideoInfo
+  @objc public func getRemoteVideoInfo() -> Snapcall_Framework.VideoInfo
   public func isRinging() -> Swift.Bool
   @objc public func getCallIdentifier() -> Swift.String
   @objc public func getCallID() -> Swift.String?
@@ -561,7 +569,7 @@ extension Snapcall {
   @objc override dynamic public init()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class VideoInfo {
+@_hasMissingDesignatedInitializers @objc public class VideoInfo : ObjectiveC.NSObject {
   public enum VideoType : Swift.String {
     case camera
     case screen
@@ -572,9 +580,11 @@ extension Snapcall {
       get
     }
   }
-  public func isActive() -> Swift.Bool
-  public func isSetup() -> Swift.Bool
+  @objc public func isActive() -> Swift.Bool
+  @objc public func isSetup() -> Swift.Bool
   public func getVideoType() -> Snapcall_Framework.VideoInfo.VideoType
+  @objc public func getVideoTypeValue() -> Swift.String
+  @objc override dynamic public init()
   @objc deinit
 }
 @available(iOS 10.0, *)

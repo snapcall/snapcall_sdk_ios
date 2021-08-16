@@ -251,16 +251,37 @@ SWIFT_CLASS("_TtC18Snapcall_Framework9CallError")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UIColor;
+@class UIImage;
 
 SWIFT_CLASS("_TtC18Snapcall_Framework18CallViewProperties")
 @interface CallViewProperties : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (CallViewProperties * _Nonnull)setShouldBackWithShouldBack:(BOOL)shouldBack SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setIconColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (UIColor * _Nonnull)getIconColor SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setBackColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (UIColor * _Nonnull)getBackColor SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setHideColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (UIColor * _Nonnull)getHideColor SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setHangupBackgroundColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setBackgroundColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setTextColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setTextColorState:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setActionBarBackgroundColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setIconBGColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setUserImageBGColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setBackgroundBlur:(BOOL)blur SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setCallName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setAppLabel:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setUserImage:(UIImage * _Nonnull)image SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setBrandImage:(UIImage * _Nonnull)image SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 
 
+@class VideoInfo;
 @class NSDate;
 
 /// Allow to give access to the developer to call information needed
@@ -270,6 +291,8 @@ SWIFT_CLASS("_TtC18Snapcall_Framework18CallViewProperties")
 /// It serve to make snapcall api request about the call.
 SWIFT_CLASS("_TtC18Snapcall_Framework10SCCallObjC")
 @interface SCCallObjC : NSObject
+- (VideoInfo * _Nonnull)getLocalVideoInfo SWIFT_WARN_UNUSED_RESULT;
+- (VideoInfo * _Nonnull)getRemoteVideoInfo SWIFT_WARN_UNUSED_RESULT;
 /// return the identifier for the call represented by this
 /// author:
 /// Pierre Noyelle
@@ -717,6 +740,32 @@ SWIFT_PROTOCOL("_TtP18Snapcall_Framework20SCClientListenerObjC_")
 - (void)onErrorWithError:(CallError * _Nonnull)error;
 @end
 
+
+/// Print Log. Object Instanciate in each start of file
+/// Log should be unactivate for production mod
+/// author:
+/// Pierre Noyelle
+SWIFT_CLASS("_TtC18Snapcall_Framework5SCLog")
+@interface SCLog : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL verbose;)
++ (BOOL)verbose SWIFT_WARN_UNUSED_RESULT;
++ (void)setVerbose:(BOOL)value;
+/// activate debug log
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL debug;)
++ (BOOL)debug SWIFT_WARN_UNUSED_RESULT;
++ (void)setDebug:(BOOL)value;
+/// activate error log
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL error;)
++ (BOOL)error SWIFT_WARN_UNUSED_RESULT;
++ (void)setError:(BOOL)value;
+/// activate info log
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL info;)
++ (BOOL)info SWIFT_WARN_UNUSED_RESULT;
++ (void)setInfo:(BOOL)value;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class NSData;
 @class SnapcallExternalParameter;
 @class PKPushPayload;
@@ -986,7 +1035,6 @@ SWIFT_PROTOCOL("_TtP18Snapcall_Framework22Snapcall_eventListener_")
 - (void)removeAllEventListener;
 @end
 
-@class UIColor;
 @class UIFontDescriptor;
 
 SWIFT_CLASS("_TtC18Snapcall_Framework25SnapcallExternalParameter")
@@ -1054,6 +1102,16 @@ SWIFT_CLASS("_TtC18Snapcall_Framework18Snapcall_WebSocket")
 
 
 
+
+
+SWIFT_CLASS("_TtC18Snapcall_Framework9VideoInfo")
+@interface VideoInfo : NSObject
+- (BOOL)isActive SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isSetup SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getVideoTypeValue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 /// WebSocketDelegate is an Objective-C alternative to WebSocketEvents and is used to delegate the events for the WebSocket connection.

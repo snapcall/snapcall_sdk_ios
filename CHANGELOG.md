@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## Next Version
+## 5.7.1
+- add missing objective-c compatibility.
+
 ## 5.7.0
 - Agent saved in keychain, voip call to agent
 - Partner API
