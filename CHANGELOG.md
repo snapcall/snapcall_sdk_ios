@@ -1,6 +1,11 @@
 # CHANGELOG
 
 ## Next Version
+## 5.7.2
+- fix memory leak with video
+- reset ui v2 properties on call end
+- fix partner
+
 ## 5.7.1
 - add missing objective-c compatibility.
 
