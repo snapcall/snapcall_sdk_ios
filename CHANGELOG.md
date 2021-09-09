@@ -1,6 +1,13 @@
 # CHANGELOG
 
 ## Next Version
+
+## 5.8.0
+- callkit display name
+- fill and full video display
+- fix state text color not customizable
+- fix video ratio not correct
+
 ## 5.7.2
 - fix memory leak with video
 - reset ui v2 properties on call end

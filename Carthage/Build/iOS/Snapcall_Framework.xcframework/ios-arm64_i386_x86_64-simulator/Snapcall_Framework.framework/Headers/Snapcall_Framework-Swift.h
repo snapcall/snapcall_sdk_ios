@@ -267,6 +267,7 @@ SWIFT_CLASS("_TtC18Snapcall_Framework18CallViewProperties")
 - (CallViewProperties * _Nonnull)setHangupBackgroundColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setBackgroundColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setTextColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setVideoBackgroundColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setTextColorState:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setActionBarBackgroundColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setIconBGColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
@@ -392,6 +393,7 @@ SWIFT_CLASS("_TtC18Snapcall_Framework10SCCallObjC")
 
 @protocol SCClientListenerObjC;
 @class NSMutableDictionary;
+enum VideoRendererType : NSInteger;
 @class UIView;
 @class SCClientEventObjC;
 
@@ -420,7 +422,7 @@ SWIFT_CLASS("_TtC18Snapcall_Framework8SCClient") SWIFT_AVAILABILITY(ios,introduc
 /// <void>
 - (BOOL)hangupAndReturnError:(NSError * _Nullable * _Nullable)error;
 - (NSNumber * _Nullable)sendInfoWithMessage:(NSMutableDictionary * _Nonnull)message error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
-- (UIView * _Nullable)getRemoteVideoRenderer SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)getRemoteVideoRendererWithType:(enum VideoRendererType)type SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)getLocalVideoRenderer SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)startSendingVideo SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)stopSendingVideo SWIFT_WARN_UNUSED_RESULT;
@@ -1112,6 +1114,11 @@ SWIFT_CLASS("_TtC18Snapcall_Framework9VideoInfo")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM(NSInteger, VideoRendererType, open) {
+  VideoRendererTypeFull = 0,
+  VideoRendererTypeFill = 1,
+};
 
 
 /// WebSocketDelegate is an Objective-C alternative to WebSocketEvents and is used to delegate the events for the WebSocket connection.

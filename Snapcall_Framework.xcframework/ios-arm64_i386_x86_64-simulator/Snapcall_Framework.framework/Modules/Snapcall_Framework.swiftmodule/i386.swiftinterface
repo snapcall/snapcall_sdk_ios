@@ -53,6 +53,8 @@ open class DataAPIResult {
   @objc public func setHangupBackgroundColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   @objc public func setBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   @objc public func setTextColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getVideoBackgroundColorColor() -> UIKit.UIColor
+  @objc public func setVideoBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   public func getTextColor() -> UIKit.UIColor
   @objc public func setTextColorState(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   public func getTextColorState() -> UIKit.UIColor
@@ -199,7 +201,7 @@ extension Dictionary {
   @objc public func hangup() throws
   public func sendInfo(message: [Swift.String : Any]) throws -> Swift.Int
   @objc public func sendInfo(message: Foundation.NSMutableDictionary) throws -> Foundation.NSNumber
-  @objc public func getRemoteVideoRenderer() -> UIKit.UIView?
+  @objc public func getRemoteVideoRenderer(type: Snapcall_Framework.VideoRendererType) -> UIKit.UIView?
   @objc public func getLocalVideoRenderer() -> UIKit.UIView?
   @objc public func startSendingVideo() -> Swift.Bool
   @objc public func stopSendingVideo() -> Swift.Bool
@@ -422,6 +424,15 @@ extension SCCall : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+@objc public enum VideoRendererType : Swift.Int {
+  case full
+  case fill
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers @objc public class AgentError : Foundation.NSError {
   @objc override dynamic public init(domain: Swift.String, code: Swift.Int, userInfo dict: [Swift.String : Any]? = nil)
   @objc deinit
@@ -598,6 +609,9 @@ extension Snapcall_Framework.WebSocketBinaryType : Swift.Hashable {}
 extension Snapcall_Framework.WebSocketReadyState : Swift.Equatable {}
 extension Snapcall_Framework.WebSocketReadyState : Swift.Hashable {}
 extension Snapcall_Framework.WebSocketReadyState : Swift.RawRepresentable {}
+extension Snapcall_Framework.VideoRendererType : Swift.Equatable {}
+extension Snapcall_Framework.VideoRendererType : Swift.Hashable {}
+extension Snapcall_Framework.VideoRendererType : Swift.RawRepresentable {}
 extension Snapcall_Framework.VideoInfo.VideoType : Swift.Equatable {}
 extension Snapcall_Framework.VideoInfo.VideoType : Swift.Hashable {}
 extension Snapcall_Framework.VideoInfo.VideoType : Swift.RawRepresentable {}
