@@ -1,5 +1,5 @@
 # Snapcall IOS SDK
-version 5.8.0 : swift package manager
+version 5.8.1 : swift package manager
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -11,11 +11,11 @@ see [Snapcall documentation](https://doc.snapcall.io/#ios)
 
 ## carthage
 
-github "snapcall/snapcall_sdk_ios" == 5.8.0
+github "snapcall/snapcall_sdk_ios" == 5.8.1
 
 ## cocoapod
 
-pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.8.0'
+pod 'Snapcall_Framework', :git => 'https://github.com/snapcall/snapcall_sdk_ios', :tag => '5.8.1'
 
 ## Swift Package Manager
 

@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		GvP9kcBgxBI94R/O0xPhDFFClOY=
+		9G1gpM09HPuUJV1MmknrJ2prOwQ=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		GvP9kcBgxBI94R/O0xPhDFFClOY=
+		9G1gpM09HPuUJV1MmknrJ2prOwQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -112,7 +112,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aCKQnqk17HowWsejXDTjRuXhI+tBNQHKfH6gB7upXJw=
+			UwMiuP1BHQ3cFoq+oGGHF9OF8NdpD3VnsgmH8fkegWg=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
@@ -133,7 +133,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aCKQnqk17HowWsejXDTjRuXhI+tBNQHKfH6gB7upXJw=
+			UwMiuP1BHQ3cFoq+oGGHF9OF8NdpD3VnsgmH8fkegWg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
