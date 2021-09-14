@@ -258,12 +258,18 @@ SWIFT_CLASS("_TtC18Snapcall_Framework18CallViewProperties")
 @interface CallViewProperties : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (CallViewProperties * _Nonnull)setShouldBackWithShouldBack:(BOOL)shouldBack SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setHangupIconColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (UIColor * _Nonnull)getHangupIconColor SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setIconColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (UIColor * _Nonnull)getIconColor SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setBackColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (UIColor * _Nonnull)getBackColor SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setBackBGColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (UIColor * _Nonnull)getBackBGColor SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setHideColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (UIColor * _Nonnull)getHideColor SWIFT_WARN_UNUSED_RESULT;
+- (CallViewProperties * _Nonnull)setHideBGColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (UIColor * _Nonnull)getHideBGColor SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setHangupBackgroundColorWithColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setBackgroundColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (CallViewProperties * _Nonnull)setTextColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;

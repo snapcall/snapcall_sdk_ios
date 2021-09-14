@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## Next Version
+## 5.8.2
+- customize hangup icon color, back and hide background color.
+
 ## 5.8.1
 - fix callID for agent
 

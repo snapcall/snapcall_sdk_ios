@@ -44,12 +44,18 @@ open class DataAPIResult {
 @_inheritsConvenienceInitializers @objc public class CallViewProperties : ObjectiveC.NSObject {
   @objc override dynamic public init()
   @objc public func setShouldBack(shouldBack: Swift.Bool) -> Snapcall_Framework.CallViewProperties
+  @objc public func setHangupIconColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getHangupIconColor() -> UIKit.UIColor
   @objc public func setIconColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   @objc public func getIconColor() -> UIKit.UIColor
   @objc public func setBackColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   @objc public func getBackColor() -> UIKit.UIColor
+  @objc public func setBackBGColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getBackBGColor() -> UIKit.UIColor
   @objc public func setHideColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   @objc public func getHideColor() -> UIKit.UIColor
+  @objc public func setHideBGColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getHideBGColor() -> UIKit.UIColor
   @objc public func setHangupBackgroundColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   @objc public func setBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
   @objc public func setTextColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
