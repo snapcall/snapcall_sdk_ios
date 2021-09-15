@@ -1,6 +1,10 @@
 # CHANGELOG
 
 ## Next Version
+## 5.8.3
+- fix multiple answer event for agent
+- fix infinite loop with video and updateUI
+
 ## 5.8.2
 - customize hangup icon color, back and hide background color.
 
