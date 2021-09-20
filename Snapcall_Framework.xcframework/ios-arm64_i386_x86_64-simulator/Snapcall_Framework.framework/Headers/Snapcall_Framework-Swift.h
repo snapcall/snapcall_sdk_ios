@@ -910,8 +910,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSData * _Nullable callI
 
 @interface Snapcall (SWIFT_EXTENSION(Snapcall_Framework))
 - (void)connectPartnerAgentWithPartnerID:(NSInteger)partnerID agent:(NSString * _Nonnull)agent token:(NSString * _Nonnull)token parameter:(SnapcallExternalParameter * _Nullable)parameter :(void (^ _Nonnull)(NSError * _Nullable, Agent * _Nullable))callback;
-- (void)sendPartnerCallInvitationWithPartnerID:(NSInteger)partnerID token:(NSString * _Nonnull)token chatID:(NSString * _Nonnull)chatID :(void (^ _Nonnull)(NSError * _Nullable))callback;
-- (void)sendPartnerCallInvitationWithPartnerID:(NSInteger)partnerID agent:(NSString * _Nonnull)agent token:(NSString * _Nonnull)token chatID:(NSString * _Nonnull)chatID parameter:(SnapcallExternalParameter * _Nullable)parameter :(void (^ _Nonnull)(NSError * _Nullable, Agent * _Nullable))callback;
+- (void)sendPartnerCallInvitationWithPartnerID:(NSInteger)partnerID token:(NSString * _Nonnull)token chatID:(NSString * _Nonnull)chatID customParameter:(NSDictionary<NSString *, id> * _Nonnull)customParameter :(void (^ _Nonnull)(NSError * _Nullable))callback;
+- (void)sendPartnerCallInvitationWithPartnerID:(NSInteger)partnerID agent:(NSString * _Nonnull)agent token:(NSString * _Nonnull)token chatID:(NSString * _Nonnull)chatID customParameter:(NSDictionary<NSString *, id> * _Nonnull)customParameter parameter:(SnapcallExternalParameter * _Nullable)parameter :(void (^ _Nonnull)(NSError * _Nullable, Agent * _Nullable))callback;
 @end
 
 

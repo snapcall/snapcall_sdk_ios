@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/Snapcall_Framework-Swift.h</key>
 		<data>
-		NqVR/IvbpshSNLu09S3pKbzV+T8=
+		Mhd+qunc7v1FXIuvfBBWYUvB1oM=
 		</data>
 		<key>Headers/Snapcall_Framework.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		C65D7QbD4psvTcCRN1sTH+CrzEs=
+		tbF+2utxqYOls/vY/87EktiXNyQ=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		C65D7QbD4psvTcCRN1sTH+CrzEs=
+		tbF+2utxqYOls/vY/87EktiXNyQ=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		A5nMiguaxoE/AdsRDVsIGp2RuUQ=
+		m0V+33sIatVIewRFrGsAnfSRZC8=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		E30MSMgNlTJvPMeG01vYN5YYj1o=
+		RTtg64iWZ0et+jAqY37W1A4rT2A=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		A5nMiguaxoE/AdsRDVsIGp2RuUQ=
+		m0V+33sIatVIewRFrGsAnfSRZC8=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		E30MSMgNlTJvPMeG01vYN5YYj1o=
+		RTtg64iWZ0et+jAqY37W1A4rT2A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5+3GlApVRyKoBygNBt82vFoqEifI2lcC3dYZBHK1CTk=
+			qISdVnqUJiyWLv7fP9aOqow9e0Syr3fxG7TSXs9u0Ac=
 			</data>
 		</dict>
 		<key>Headers/Snapcall_Framework.h</key>
@@ -84,14 +84,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KSobBKkpBw5fjtPL7REUdzUBhlSUbNN2iPRGuZondLo=
+			446PXJlXYAGJpDYh+ax9GHOmL0lgqTyj3775YigBrTY=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KSobBKkpBw5fjtPL7REUdzUBhlSUbNN2iPRGuZondLo=
+			446PXJlXYAGJpDYh+ax9GHOmL0lgqTyj3775YigBrTY=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -105,14 +105,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FKFVFFUEn4ayw5MaIB5aiwftrjtWO8dWqxh4Pm/VA/c=
+			cFsAwbIF40cWP+a47YB4kTkYp/UtahnuHigVirhYIhE=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YGuBkpDHLfPkt+kNpRJ2aJCRhz/RMIhRzqbCb/HLQxA=
+			vWG3l9H74wvF7lAPJyD71llDgqGgda2q/bb5x4+mogA=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
@@ -126,14 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FKFVFFUEn4ayw5MaIB5aiwftrjtWO8dWqxh4Pm/VA/c=
+			cFsAwbIF40cWP+a47YB4kTkYp/UtahnuHigVirhYIhE=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YGuBkpDHLfPkt+kNpRJ2aJCRhz/RMIhRzqbCb/HLQxA=
+			vWG3l9H74wvF7lAPJyD71llDgqGgda2q/bb5x4+mogA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

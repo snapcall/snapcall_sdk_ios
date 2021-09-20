@@ -576,8 +576,8 @@ extension Snapcall {
 }
 extension Snapcall {
   @objc dynamic public func connectPartnerAgent(partnerID: Swift.Int, agent: Swift.String, token: Swift.String, parameter: Snapcall_Framework.SnapcallExternalParameter?, _ callback: @escaping ((Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void))
-  @objc dynamic public func sendPartnerCallInvitation(partnerID: Swift.Int, token: Swift.String, chatID: Swift.String, _ callback: @escaping ((Swift.Error?) -> Swift.Void))
-  @objc dynamic public func sendPartnerCallInvitation(partnerID: Swift.Int, agent: Swift.String, token: Swift.String, chatID: Swift.String, parameter: Snapcall_Framework.SnapcallExternalParameter?, _ callback: @escaping ((Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void))
+  @objc dynamic public func sendPartnerCallInvitation(partnerID: Swift.Int, token: Swift.String, chatID: Swift.String, customParameter: [Swift.String : Any], _ callback: @escaping ((Swift.Error?) -> Swift.Void))
+  @objc dynamic public func sendPartnerCallInvitation(partnerID: Swift.Int, agent: Swift.String, token: Swift.String, chatID: Swift.String, customParameter: [Swift.String : Any], parameter: Snapcall_Framework.SnapcallExternalParameter?, _ callback: @escaping ((Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void))
 }
 @_hasMissingDesignatedInitializers @objc public class CallError : ObjectiveC.NSObject {
   public static let mediaConnectionError: Swift.Int

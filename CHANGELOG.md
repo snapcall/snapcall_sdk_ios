@@ -1,6 +1,11 @@
 # CHANGELOG
 
 ## Next Version
+## 5.9.0
+- custom parameter so the partner sendCall request
+- customer name set from push payload
+- check safe area to avoid system's button to overlap snapcall buttons.
+
 ## 5.8.3
 - fix multiple answer event for agent
 - fix infinite loop with video and updateUI
