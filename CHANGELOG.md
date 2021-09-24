@@ -1,6 +1,47 @@
 # CHANGELOG
 
 ## Next Version
+## 5.9.2
+- remove a file from from the release bundle.
+## 5.9.1
+- xcode 13 build 
+## 5.9.0
+- custom parameter so the partner sendCall request
+- customer name set from push payload
+- check safe area to avoid system's button to overlap snapcall buttons.
+
+## 5.8.3
+- fix multiple answer event for agent
+- fix infinite loop with video and updateUI
+
+## 5.8.2
+- customize hangup icon color, back and hide background color.
+
+## 5.8.1
+- fix callID for agent
+
+## 5.8.0
+- callkit display name
+- fill and full video display
+- fix state text color not customizable
+- fix video ratio not correct
+
+## 5.7.2
+- fix memory leak with video
+- reset ui v2 properties on call end
+- fix partner
+
+## 5.7.1
+- add missing objective-c compatibility.
+
+## 5.7.0
+- Agent saved in keychain, voip call to agent
+- Partner API
+- API updateUI to reload UI and appear/dismiss event
+- UI full refactoring with video
+- Agent call reception in waiting mod
+- Agent API
+
 ## 5.6.10
 - added arm 64 simulator binary
 ## 5.6.9
