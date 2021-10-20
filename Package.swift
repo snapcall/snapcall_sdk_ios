@@ -8,10 +8,10 @@ let package = Package(
     products: [
         .library(
             name: "Snapcall_Framework",
-            targets: ["Snapcall_Framework"]),
+            targets: ["Snapcall_Framework"])
     ],
     dependencies: [
- 		.package(name: "WebRTC_IOS", url:"https://github.com/pnoyelle/WebRTC_IOS", .exact("1.6.0-bitcode"))
+ 		.package(name: "WebRTC_IOS", url: "https://github.com/pnoyelle/WebRTC_IOS", .exact("1.6.0-bitcode"))
     ],
     targets: [
       .binaryTarget(
