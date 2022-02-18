@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Assets.car</key>
+		<data>
+		TRJSu854S9o3oNRHgjd4c5jYRm0=
+		</data>
 		<key>Headers/Snapcall_Framework-Swift.h</key>
 		<data>
-		Madw/1oCjX1h7baKLMiPQpudBzo=
+		rWLgUosFT+jBC68YhQUeK1AjA3M=
 		</data>
 		<key>Headers/Snapcall_Framework.h</key>
 		<data>
@@ -14,39 +18,39 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bUq3qguYyWevX5/YdF7SRdovvuM=
+		rJc1p1LQiezREVhKhpAKKRpxryQ=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		zuPXe9ZoWa0+dDLKVMTW9en0Iok=
+		c7gi4EHlidsO5TJ+aQgX22OdPYY=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		zuPXe9ZoWa0+dDLKVMTW9en0Iok=
+		c7gi4EHlidsO5TJ+aQgX22OdPYY=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Pe0pA696YJ3S0xtvAwDBx5P6axI=
+		A7jFPEvI3rhBfDKKaeR3YJJiAbw=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Y/m+xQb3foBJ/rCj33sczKi8Qdw=
+		Lag0l1IjuxRFNmbX3qLt84kRY5E=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ssCL8aajgLskoT/64IvCLBp9nvg=
+		CxJfsZeAHBGX8i2CU4rCO/zIe3w=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		Pe0pA696YJ3S0xtvAwDBx5P6axI=
+		A7jFPEvI3rhBfDKKaeR3YJJiAbw=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		Y/m+xQb3foBJ/rCj33sczKi8Qdw=
+		Lag0l1IjuxRFNmbX3qLt84kRY5E=
 		</data>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		ssCL8aajgLskoT/64IvCLBp9nvg=
+		CxJfsZeAHBGX8i2CU4rCO/zIe3w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -55,11 +59,18 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hSAQLDNYIyJdwfLLGME/06T6R+S3i21hj0HdjAhUrEo=
+			</data>
+		</dict>
 		<key>Headers/Snapcall_Framework-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/Eg1AMNkWHsuq1pGWPgU4UaSxk6ezuMQoBRC5HXv5bY=
+			yqobcRxqo3CX606PMKJ0QKMxWtdQBTWrx77bKzyy+2s=
 			</data>
 		</dict>
 		<key>Headers/Snapcall_Framework.h</key>
@@ -73,56 +84,56 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			M4G7UNa4IRFWHTlDv8XJkMD09vehoQm5SC2//HgN8V0=
+			A8EiQC5S1FaJGZi0iG5sMck0u1VHl+c3DQl2K6kkmO0=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			M4G7UNa4IRFWHTlDv8XJkMD09vehoQm5SC2//HgN8V0=
+			A8EiQC5S1FaJGZi0iG5sMck0u1VHl+c3DQl2K6kkmO0=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZDhGIgJzd7KNVui6zolnmgnW1D+uDubK/EooO/8HeDY=
+			2bnFm0FjSa4VyGR47BexmnL0mOW//1LcOLhA13JgddM=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QhCl/d6D4CMTTNPc4G3yeQpzDX0tcD70afnbclJ3PYY=
+			05fh5y9yhhutUiiitVMHm5C/xjnWZqFecoeFa6Bce6M=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jxpQELfNRKgCyWGWaVmbowMu0ycPF4tLabFBQ8YLHhg=
+			T2+/Bwrgh2Ufn4Toyovdx9GKSEVajqwVu0gIvsTwS88=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZDhGIgJzd7KNVui6zolnmgnW1D+uDubK/EooO/8HeDY=
+			2bnFm0FjSa4VyGR47BexmnL0mOW//1LcOLhA13JgddM=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QhCl/d6D4CMTTNPc4G3yeQpzDX0tcD70afnbclJ3PYY=
+			05fh5y9yhhutUiiitVMHm5C/xjnWZqFecoeFa6Bce6M=
 			</data>
 		</dict>
 		<key>Modules/Snapcall_Framework.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jxpQELfNRKgCyWGWaVmbowMu0ycPF4tLabFBQ8YLHhg=
+			T2+/Bwrgh2Ufn4Toyovdx9GKSEVajqwVu0gIvsTwS88=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

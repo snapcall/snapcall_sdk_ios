@@ -1,21 +1,25 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Snapcall_Framework
 import AVFoundation
+import AVKit
 import CallKit
 import CoreTelephony
 import Foundation
 import PushKit
 @_exported import Snapcall_Framework
 import Swift
+import SwiftUI
 import SystemConfiguration
 import UIKit
 import WebRTC
+import _Concurrency
 public struct SCCall {
   public func getCallIdentifier() -> Swift.String
+  public func getCallID() -> Swift.String?
   public func getDisplayName() -> Swift.String?
   public func getDisplayBrand() -> Swift.String?
-  public func getCurrentCallState() -> Swift.String?
+  public func getCurrentCallState() -> Snapcall_Framework.SCClient.State?
   public func getTime() -> Swift.Int
   public func getStartedData() -> Foundation.Date?
   public func getDuration() -> Swift.Int
@@ -23,12 +27,71 @@ public struct SCCall {
   public func getAgentMail() -> Swift.String?
   public func isTransferred() -> Swift.Bool
   public func isRinging() -> Swift.Bool
+  public func getLocalVideoInfo() -> Snapcall_Framework.VideoInfo
+  public func getRemoteVideoInfo() -> Snapcall_Framework.VideoInfo
 }
-public class SCLog {
-  public static var verbose: Swift.Bool
-  public static var debug: Swift.Bool
-  public static var error: Swift.Bool
-  public static var info: Swift.Bool
+open class DataAPIResult {
+  public enum DataAPIError : Swift.Error {
+    case JSONFailure(Swift.String)
+    case missingData(Swift.String)
+  }
+  public func getValue<T>(key: Swift.String) throws -> T
+  public func getNullableValue<T>(key: Swift.String) throws -> T?
+  public func getDictionnary(key: Swift.String) throws -> Snapcall_Framework.DataAPIResult
+  public init(data: [Swift.String : Any])
+  public init(data: Foundation.Data?) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class CallViewProperties : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func setShouldBack(shouldBack: Swift.Bool) -> Snapcall_Framework.CallViewProperties
+  @objc public func setHangupIconColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getHangupIconColor() -> UIKit.UIColor
+  @objc public func setIconColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getIconColor() -> UIKit.UIColor
+  @objc public func setIconColorInactive(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getIconColorInactive() -> UIKit.UIColor
+  @objc public func setBackColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getBackColor() -> UIKit.UIColor
+  @objc public func setBackBGColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getBackBGColor() -> UIKit.UIColor
+  @objc public func setHideColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getHideColor() -> UIKit.UIColor
+  @objc public func setHideBGColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func getHideBGColor() -> UIKit.UIColor
+  @objc public func setHangupBackgroundColor(color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setTextColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getVideoBackgroundColorColor() -> UIKit.UIColor
+  @objc public func setVideoBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getTextColor() -> UIKit.UIColor
+  @objc public func setTextColorState(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getTextColorState() -> UIKit.UIColor
+  public func getBackgroundColor() -> UIKit.UIColor
+  @objc public func setActionBarBackgroundColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getActionBarBackgroundColor() -> UIKit.UIColor
+  public func getIconBGColor() -> UIKit.UIColor
+  @objc public func setIconBGColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getIconBGColorInactive() -> UIKit.UIColor
+  @objc public func setIconBGColorInactive(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  public func getUserImageBGColor() -> UIKit.UIColor
+  @objc public func setUserImageBGColor(_ color: UIKit.UIColor) -> Snapcall_Framework.CallViewProperties
+  @objc public func setBackgroundBlur(_ blur: Swift.Bool) -> Snapcall_Framework.CallViewProperties
+  public func useBackgroundBlur() -> Swift.Bool
+  @objc public func setCallName(_ name: Swift.String) -> Snapcall_Framework.CallViewProperties
+  public func getCallName() -> Swift.String
+  @objc public func setAppLabel(_ name: Swift.String) -> Snapcall_Framework.CallViewProperties
+  public func getAppLabel() -> Swift.String
+  @objc public func setUserImage(_ image: UIKit.UIImage) -> Snapcall_Framework.CallViewProperties
+  public func getUserImage() -> UIKit.UIImage?
+  @objc public func setBrandImage(_ image: UIKit.UIImage) -> Snapcall_Framework.CallViewProperties
+  @objc deinit
+}
+@objc public class SCLog : ObjectiveC.NSObject {
+  @objc public static var verbose: Swift.Bool
+  @objc public static var debug: Swift.Bool
+  @objc public static var error: Swift.Bool
+  @objc public static var info: Swift.Bool
   public init(file: Swift.String, object: Swift.String)
   public func v(_ method: Swift.String, _ message: Swift.String?)
   public func d(_ method: Swift.String, _ message: Swift.String?)
@@ -42,12 +105,14 @@ public class SCLog {
   @objc public func getError() -> Swift.Error?
   @objc public func isConnected() -> Swift.Bool
   @objc public func getCall() -> Snapcall_Framework.SCCallObjC?
-  @objc override dynamic public init()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class SCCallObjC : ObjectiveC.NSObject {
+  @objc public func getLocalVideoInfo() -> Snapcall_Framework.VideoInfo
+  @objc public func getRemoteVideoInfo() -> Snapcall_Framework.VideoInfo
   public func isRinging() -> Swift.Bool
   @objc public func getCallIdentifier() -> Swift.String
+  @objc public func getCallID() -> Swift.String?
   @objc public func getDisplayName() -> Swift.String?
   @objc public func getDisplayBrand() -> Swift.String?
   @objc public func getCurrentCallState() -> Swift.String?
@@ -57,18 +122,22 @@ public class SCLog {
   @objc public func isHeld() -> Swift.Bool
   @objc public func getAgentMail() -> Swift.String?
   @objc public func isTransferred() -> Swift.Bool
-  @objc override dynamic public init()
   @objc deinit
 }
 @objc public protocol SCClientListenerObjC {
   @objc func onConnectionReady(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onCreated(_ parameter: Snapcall_Framework.SCClientEventObjC)
+  @objc func onUpdateUI(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onRinging(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onAnswer(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onInternetDown(_ parameter: Snapcall_Framework.SCClientEventObjC)
+  @objc func onRemoteVideoInfo(_ parameter: Snapcall_Framework.SCClientEventObjC)
+  @objc func onLocalVideoInfo(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onInternetUP(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onHangup(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onHeld(_ parameter: Snapcall_Framework.SCClientEventObjC)
+  @objc func onViewDidAppear(_ parameter: Snapcall_Framework.SCClientEventObjC)
+  @objc func onViewDismiss(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onUnheld(_ parameter: Snapcall_Framework.SCClientEventObjC)
   @objc func onConnectionShutDown()
   @objc func onMuteChange(_ parameter: Snapcall_Framework.SCClientEventObjC)
@@ -78,16 +147,33 @@ public class SCLog {
   @objc func onMessage(callID: Swift.String, message: Any)
   @objc func onError(error: Snapcall_Framework.CallError)
 }
-extension NSMutableArray {
+@_hasMissingDesignatedInitializers @objc public class APIError : Foundation.NSError {
+  final public let statusCode: Swift.Int
+  final public let message: Swift.String
+  @objc deinit
+}
+extension Foundation.NSMutableArray {
   public func toJSONString() -> Swift.String?
 }
-extension Array {
+extension Swift.Array {
   public func toJSONString() -> Swift.String?
 }
-extension NSMutableDictionary {
+@_hasMissingDesignatedInitializers public class AgentData : Swift.Codable {
+  public func getWrapUpTime() -> Swift.Int
+  public func getMaxWrapUpTime() -> Swift.Int
+  public func getLastBridgeEnd() -> Swift.Int
+  public func getStatus() -> Swift.String
+  public func isConnected() -> Swift.Bool
+  public func getProvisionnigID() -> Swift.String
+  public func getMail() -> Swift.String
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+extension Foundation.NSMutableDictionary {
   public func toJSONString() -> Swift.String?
 }
-extension Dictionary {
+extension Swift.Dictionary {
   public func toJSONString() -> Swift.String?
 }
 @objc public protocol Snapcall_eventListener {
@@ -102,11 +188,18 @@ extension Dictionary {
 }
 @_inheritsConvenienceInitializers @available(iOS 10.0, *)
 @objc public class SCClient : ObjectiveC.NSObject {
-  public static let CREATED: Swift.String
-  public static let DISCONNECTED: Swift.String
-  public static let RINGING: Swift.String
-  public static let CONNECTED: Swift.String
-  public static let ENDED: Swift.String
+  public enum State : Swift.String {
+    case CREATED
+    case DISCONNECTED
+    case RINGING
+    case CONNECTED
+    case ENDED
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
   @objc override dynamic public init()
   @objc deinit
   public init(listener: Snapcall_Framework.SCClientListener)
@@ -115,18 +208,35 @@ extension Dictionary {
   @objc public func hangup() throws
   public func sendInfo(message: [Swift.String : Any]) throws -> Swift.Int
   @objc public func sendInfo(message: Foundation.NSMutableDictionary) throws -> Foundation.NSNumber
+  @objc public func getRemoteVideoRenderer(type: Snapcall_Framework.VideoRendererType) -> UIKit.UIView?
+  @objc public func getLocalVideoRenderer() -> UIKit.UIView?
+  @objc public func startSendingVideo() -> Swift.Bool
+  @objc public func stopSendingVideo() -> Swift.Bool
+  @objc public func switchCamera()
+  @objc public func updateUI()
+  @objc public func viewDidAppear()
+  @objc public func viewDismiss()
   @objc public func mute() throws
   @objc public func setSpeaker() throws
+  @available(iOS 10.0, *)
+  @objc public func transfer(destination: Swift.String)
   public func getCurrentClientEvent() throws -> Snapcall_Framework.SCClientEvent
   @objc public func objc_getCurrentClientEvent() throws -> Snapcall_Framework.SCClientEventObjC
-  @objc public func rateCall(rate: Swift.Int, requestCallBack: ((Swift.Error?, Swift.Bool) -> Swift.Void)?)
-  public func rateCall(call: Snapcall_Framework.SCCall?, rate: Swift.Int, requestCallBack: ((Swift.Error?, Swift.Bool) -> Swift.Void)?)
-  @objc public func rateCall(call: Snapcall_Framework.SCCallObjC?, rate: Swift.Int, requestCallBack: ((Swift.Error?, Swift.Bool) -> Swift.Void)?)
+  @objc public func rateCall(rate: Swift.Int, requestCallBack: ((_ error: Swift.Error?, Swift.Bool) -> Swift.Void)?)
+  public func rateCall(call: Snapcall_Framework.SCCall?, rate: Swift.Int, requestCallBack: ((_ error: Swift.Error?, Swift.Bool) -> Swift.Void)?)
+  @objc public func rateCall(call: Snapcall_Framework.SCCallObjC?, rate: Swift.Int, requestCallBack: ((_ error: Swift.Error?, Swift.Bool) -> Swift.Void)?)
 }
 @_hasMissingDesignatedInitializers public class PushData {
   public enum PushDataError : Swift.Error {
     case missingData(Swift.String)
   }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class AgentStatus {
+  public func isRegistered() -> Swift.Bool
+  public func getFriendlyName() -> Swift.String?
+  public func getPlatform() -> Swift.String?
+  public func getPath() -> Swift.String?
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class SnapcallExternalParameter : ObjectiveC.NSObject {
@@ -147,16 +257,17 @@ extension Dictionary {
   @objc public var fontDescriptor: UIKit.UIFontDescriptor?
   @objc public var androidNotificationTitle: Swift.String?
   @objc public var androidNotificatiobBody: Swift.String?
+  @objc public var useVideo: Swift.Bool
   @objc override dynamic public init()
   @objc deinit
 }
 public struct WebSocketEvents {
   public var open: () -> ()
-  public var close: (Swift.Int, Swift.String, Swift.Bool) -> ()
-  public var error: (Swift.Error) -> ()
-  public var message: (Any) -> ()
-  public var pong: (Any) -> ()
-  public var end: (Swift.Int, Swift.String, Swift.Bool, Swift.Error?) -> ()
+  public var close: (_ code: Swift.Int, _ reason: Swift.String, _ wasClean: Swift.Bool) -> ()
+  public var error: (_ error: Swift.Error) -> ()
+  public var message: (_ data: Any) -> ()
+  public var pong: (_ data: Any) -> ()
+  public var end: (_ code: Swift.Int, _ reason: Swift.String, _ wasClean: Swift.Bool, _ error: Swift.Error?) -> ()
 }
 public enum WebSocketBinaryType : Swift.CustomStringConvertible {
   case uInt8Array
@@ -301,7 +412,7 @@ public enum WebSocketError : Swift.Error, Swift.CustomStringConvertible {
   @objc deinit
 }
 public func == (lhs: Snapcall_Framework.Snapcall_WebSocket, rhs: Snapcall_Framework.Snapcall_WebSocket) -> Swift.Bool
-extension Snapcall_WebSocket {
+extension Snapcall_Framework.Snapcall_WebSocket {
   public var delegate: Snapcall_Framework.WebSocketDelegate? {
     get
     set
@@ -316,12 +427,55 @@ public struct SCClientEvent {
   public func isConnected() -> Swift.Bool
   public func getCall() -> Snapcall_Framework.SCCall?
 }
-extension SCCall : Swift.Codable {
+extension Snapcall_Framework.SCCall : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+@objc public enum VideoRendererType : Swift.Int {
+  case full
+  case fill
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class AgentError : Foundation.NSError {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class Agent : ObjectiveC.NSObject {
+  @available(iOS 10.0, *)
+  @objc public func setPushCredentials(registeredAppName: Swift.String, credentials: PushKit.PKPushCredentials?, friendlyName: Swift.String?, useTestPushServer: Swift.Bool) throws
+  @objc public func updateAgent(onResult: @escaping (_ error: Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void)
+  @available(iOS 10.0, *)
+  @objc public func updateAgentsList(search: Swift.String?, page: Foundation.NSNumber?, limit: Foundation.NSNumber?, onResult: @escaping (_ error: Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void)
+  public func resetWrapUpTime(onResult: @escaping (_ error: Swift.Error?, _ agent: Snapcall_Framework.Agent?) -> Swift.Void)
+  public func setAgentOnline(onResult: @escaping (_ error: Swift.Error?, _ agent: Snapcall_Framework.Agent?) -> Swift.Void)
+  public func setAgentOnBreak(onResult: @escaping (_ error: Swift.Error?, _ agent: Snapcall_Framework.Agent?) -> Swift.Void)
+  @objc deinit
+}
+extension Snapcall_Framework.Agent {
+  public func register(onResult: @escaping (_ error: Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void)
+  public func unregister(onResult: @escaping (_ error: Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void)
+  public func getCurrentRegistrationStatus(onResult: @escaping (_ error: Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void)
+}
+extension Snapcall_Framework.Agent {
+  public func getWrapUpTime() -> Swift.Int
+  @objc dynamic public func getMail() -> Swift.String
+  public func getMaxWrapUpTime() -> Swift.Int?
+  public func getLastBridgeEnd() -> Swift.Int?
+  public func getStatus() -> Swift.String?
+  public func getProvisionnigID() -> Swift.String?
+}
+extension Snapcall_Framework.Agent {
+  public func isRegistered() -> Swift.Bool?
+  public func getFriendlyName() -> Swift.String?
+  public func getPlatform() -> Swift.String?
+  public func getAgentsList() -> [Snapcall_Framework.AgentData]
+}
 public protocol SCClientListener : AnyObject {
   func onConnectionReady(_ parameter: Snapcall_Framework.SCClientEvent)
+  func onRemoteVideoInfo(_ parameter: Snapcall_Framework.SCClientEvent)
   func onCreated(_ parameter: Snapcall_Framework.SCClientEvent)
   func onRinging(_ parameter: Snapcall_Framework.SCClientEvent)
   func onAnswer(_ parameter: Snapcall_Framework.SCClientEvent)
@@ -331,8 +485,12 @@ public protocol SCClientListener : AnyObject {
   func onHeld(_ parameter: Snapcall_Framework.SCClientEvent)
   func onUnheld(_ parameter: Snapcall_Framework.SCClientEvent)
   func onConnectionShutDown()
+  func onUpdateUI(_ parameter: Snapcall_Framework.SCClientEvent)
+  func onViewDidAppear(_ parameter: Snapcall_Framework.SCClientEvent)
+  func onViewDismiss(_ parameter: Snapcall_Framework.SCClientEvent)
   func onMuteChange(_ parameter: Snapcall_Framework.SCClientEvent)
   func onSpeakerChange(_ parameter: Snapcall_Framework.SCClientEvent)
+  func onLocalVideoInfo(_ parameter: Snapcall_Framework.SCClientEvent)
   func onUIRequest(_ parameter: Snapcall_Framework.SCClientEvent)
   func onTime(_ parameter: Snapcall_Framework.SCClientEvent)
   func onMessage(callID: Swift.String, message: Any)
@@ -340,6 +498,7 @@ public protocol SCClientListener : AnyObject {
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class Snapcall : ObjectiveC.NSObject {
   @objc public static var defaultUserInterfaceOff: Swift.Bool
+  @objc public static var useUserInterfaceV2: Swift.Bool
   @objc public static var AppName: Swift.String?
   public static var preferredStatusBarStyle: UIKit.UIStatusBarStyle?
   @objc public static var ringtoneSound: Swift.String?
@@ -349,8 +508,13 @@ public protocol SCClientListener : AnyObject {
     case requestError(Swift.String)
     case badParameter(Swift.String)
     case permisionError(Swift.String)
+    case notSnapcallVOIPPushNotification(Swift.String)
+    case agentNotRegistered
   }
+  @objc public func setAPIkey(apiKey: Swift.String) -> Snapcall_Framework.Snapcall
+  public func getAgent() -> Snapcall_Framework.Agent?
   public func shouldInitVideo(_ useVideo: Swift.Bool)
+  public static func getTokenString(data: Foundation.Data) -> Swift.String?
   @available(iOS 10.0, *)
   public static func registerTokenForCallback(registeredAppName: Swift.String, credentials: PushKit.PKPushCredentials?) throws
   @objc final public func buttonIsClosed(bid_id: Swift.String, snapcallCallBack: @escaping ((Swift.Bool) -> Swift.Void)) -> Swift.Bool
@@ -365,20 +529,22 @@ public protocol SCClientListener : AnyObject {
   @available(iOS 10.0, *)
   @objc final public func restorCallUI()
   @available(iOS 10.0, *)
-  @objc final public func receivePushCall(data: PushKit.PKPushPayload?, param: Snapcall_Framework.SnapcallExternalParameter?) -> Swift.Bool
+  @objc final public func receivePushCall(data: PushKit.PKPushPayload, param: Snapcall_Framework.SnapcallExternalParameter?) throws
   @objc final public func requestPermission(callback: @escaping ((Swift.Bool) -> Swift.Void))
   @available(*, deprecated)
   @objc final public func requestPermission() -> Swift.Bool
+  @objc final public func requestPermissionVideo(callback: @escaping ((Swift.Bool) -> Swift.Void))
   @objc final public func isPermissionRequestGranted() -> Swift.Bool
   @available(iOS 10.0, *)
   @objc public static func getSnapcall() -> Snapcall_Framework.Snapcall
   @objc public static func releaseSnapcall()
-  public func rateCall(call: Snapcall_Framework.SCCall?, rate: Swift.Int, requestCallBack: ((Swift.Error?, Swift.Bool) -> Swift.Void)?)
-  @objc public func rateCall(call: Snapcall_Framework.SCCallObjC?, rate: Swift.Int, requestCallBack: ((Swift.Error?, Swift.Bool) -> Swift.Void)?)
-  public func rateCall(rate: Swift.Int, requestCallBack: ((Swift.Error?, Swift.Bool) -> Swift.Void)?)
+  @objc public func getCallViewProperties() -> Snapcall_Framework.CallViewProperties
+  public func rateCall(call: Snapcall_Framework.SCCall?, rate: Swift.Int, requestCallBack: ((_ error: Swift.Error?, Swift.Bool) -> Swift.Void)?)
+  @objc public func rateCall(call: Snapcall_Framework.SCCallObjC?, rate: Swift.Int, requestCallBack: ((_ error: Swift.Error?, Swift.Bool) -> Swift.Void)?)
+  public func rateCall(rate: Swift.Int, requestCallBack: ((_ error: Swift.Error?, Swift.Bool) -> Swift.Void)?)
   @objc deinit
 }
-extension Snapcall : Snapcall_Framework.Snapcall_eventListener {
+extension Snapcall_Framework.Snapcall : Snapcall_Framework.Snapcall_eventListener {
   @objc dynamic public func onStart()
   @objc dynamic public func onError(error: Foundation.NSString)
   @objc dynamic public func onCallStart()
@@ -392,22 +558,63 @@ extension Snapcall : Snapcall_Framework.Snapcall_eventListener {
   @objc dynamic public func removeAllEventListener()
 }
 @available(iOS 10.0, *)
-extension Snapcall {
+extension Snapcall_Framework.Snapcall {
   @objc final public func receiveCall(pushKitPayload: PushKit.PKPushPayload?, parameter: Snapcall_Framework.SnapcallExternalParameter?) -> Swift.Bool
   @objc final public func registerUser(credential: PushKit.PKPushCredentials, identifier: Swift.String?, customClientIdentifier: Swift.String?, applicationName: Swift.String, snapcallIdentifierCallBack: @escaping ((Swift.String?) -> Swift.Void)) -> Swift.Bool
   @objc final public func registerUser(token: Swift.String, identifier: Swift.String?, customClientIdentifier: Swift.String?, applicationName: Swift.String, snapcallIdentifierCallBack: @escaping ((Swift.String?) -> Swift.Void)) -> Swift.Bool
+  @objc final public func getAgent(mail: Swift.String, onResult: @escaping (_ error: Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void)
   @objc final public func setUserActive(active: Swift.Bool, credential: PushKit.PKPushCredentials, identifier: Swift.String?, customClientIdentifier: Swift.String?, applicationName: Swift.String, snapcallCallBack: @escaping ((Swift.Bool) -> Swift.Void)) -> Swift.Bool
   @objc final public func setUserActive(active: Swift.Bool, token: Swift.String, identifier: Swift.String?, customClientIdentifier: Swift.String?, applicationName: Swift.String, snapcallCallBack: @escaping ((Swift.Bool) -> Swift.Void)) -> Swift.Bool
+}
+extension Snapcall_Framework.Snapcall {
+  @objc dynamic public func getAgentsList(search: Swift.String?, page: Foundation.NSNumber?, limit: Foundation.NSNumber?, onResult: @escaping (_ error: Swift.Error?, Foundation.NSArray?) -> Swift.Void)
+  @available(iOS 10.0, *)
+  @objc final public func launchAgentCall(agent: Snapcall_Framework.Agent, number: Swift.String, param: Snapcall_Framework.SnapcallExternalParameter?)
+  @available(iOS 10.0, *)
+  @objc final public func connectAgent(agent: Snapcall_Framework.Agent, param: Snapcall_Framework.SnapcallExternalParameter?)
+}
+extension Snapcall_Framework.Snapcall {
+  @objc dynamic public func connectPartnerAgent(partnerID: Swift.Int, agent: Swift.String, token: Swift.String, parameter: Snapcall_Framework.SnapcallExternalParameter?, _ callback: @escaping ((Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void))
+  @objc dynamic public func sendPartnerCallInvitation(partnerID: Swift.Int, token: Swift.String, chatID: Swift.String, customParameter: [Swift.String : Any], _ callback: @escaping ((Swift.Error?) -> Swift.Void))
+  @objc dynamic public func sendPartnerCallInvitation(partnerID: Swift.Int, agent: Swift.String, token: Swift.String, chatID: Swift.String, customParameter: [Swift.String : Any], parameter: Snapcall_Framework.SnapcallExternalParameter?, _ callback: @escaping ((Swift.Error?, Snapcall_Framework.Agent?) -> Swift.Void))
 }
 @_hasMissingDesignatedInitializers @objc public class CallError : ObjectiveC.NSObject {
   public static let mediaConnectionError: Swift.Int
   @objc public func getCode() -> Swift.Int
   @objc public func getDescription() -> Swift.String
-  @objc override dynamic public init()
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc public class VideoInfo : ObjectiveC.NSObject {
+  public enum VideoType : Swift.String {
+    case camera
+    case screen
+    case none
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc public func isActive() -> Swift.Bool
+  @objc public func isSetup() -> Swift.Bool
+  public func getVideoType() -> Snapcall_Framework.VideoInfo.VideoType
+  @objc public func getVideoTypeValue() -> Swift.String
+  @objc deinit
+}
+@available(iOS 10.0, *)
+extension Snapcall_Framework.SCClient.State : Swift.Equatable {}
+@available(iOS 10.0, *)
+extension Snapcall_Framework.SCClient.State : Swift.Hashable {}
+@available(iOS 10.0, *)
+extension Snapcall_Framework.SCClient.State : Swift.RawRepresentable {}
 extension Snapcall_Framework.WebSocketBinaryType : Swift.Equatable {}
 extension Snapcall_Framework.WebSocketBinaryType : Swift.Hashable {}
 extension Snapcall_Framework.WebSocketReadyState : Swift.Equatable {}
 extension Snapcall_Framework.WebSocketReadyState : Swift.Hashable {}
 extension Snapcall_Framework.WebSocketReadyState : Swift.RawRepresentable {}
+extension Snapcall_Framework.VideoRendererType : Swift.Equatable {}
+extension Snapcall_Framework.VideoRendererType : Swift.Hashable {}
+extension Snapcall_Framework.VideoRendererType : Swift.RawRepresentable {}
+extension Snapcall_Framework.VideoInfo.VideoType : Swift.Equatable {}
+extension Snapcall_Framework.VideoInfo.VideoType : Swift.Hashable {}
+extension Snapcall_Framework.VideoInfo.VideoType : Swift.RawRepresentable {}
